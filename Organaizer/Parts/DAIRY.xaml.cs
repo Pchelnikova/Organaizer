@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using MahApps.Metro.Controls;
-using Organaizer.Model_Classes;
+
 
 namespace Organaizer
 {
@@ -25,7 +16,7 @@ namespace Organaizer
         {
             InitializeComponent();
             //Title by login
-            using (var ctx = new Model())
+            using (var ctx = new DAL.Model())
             {
                 var users = ctx.Users.ToList();
                 var user = users.FirstOrDefault(item => item.Id == MainWindow.Global.userID);
@@ -37,7 +28,7 @@ namespace Organaizer
         ///all notes by dates
         private void select_date (object sender, RoutedEventArgs e) 
         {
-            using (var ctx = new Model())
+            using (var ctx = new DAL.Model())
             {
                 var dairies = ctx.Dayries.Where(note => note.User.Id == MainWindow.Global.userID).ToList();
                 dairies = dairies.Where(day => (day.Date_ >= Calendar.SelectedDate.Value) && (day.Date_ <= Calendar2.SelectedDate.Value)).ToList();
@@ -57,7 +48,7 @@ namespace Organaizer
             Calendar.Visibility = Visibility.Visible;
             Calendar2.Visibility = Visibility.Visible;
 
-            using (var ctx = new Model())
+            using (var ctx = new DAL.Model())
             {
                 var dairies = ctx.Dayries.Where(note => note.User.Id == MainWindow.Global.userID).ToList();  
                 var dairy_list = dairies.Select(item => new { item.Date_, item.Text });
@@ -74,14 +65,14 @@ namespace Organaizer
         private void Button_Click_2(object sender, RoutedEventArgs e) 
         {
 
-            using (var ctx = new Model())
+            using (var ctx = new DAL.Model())
             {
                 var dairies = ctx.Dayries.ToList();
                 var users = ctx.Users.ToList();
                 var dairy = dairies.Where(item => item.Id == MainWindow.Global.userID);
                 if (dairy != null)
                 {
-                    Dairy new_note = new Dairy
+                    DAL.Model_Classes.Dairy new_note = new DAL.Model_Classes.Dairy
                     {
                         Date_ =  System.DateTime.Now,
                         Text = Dairy_Text.Text,

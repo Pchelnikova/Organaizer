@@ -1,8 +1,8 @@
-﻿using Organaizer.Model_Classes;
+﻿
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace Organaizer
+namespace DAL.Model_Classes
 {
     internal class MyInitializer<T> :DropCreateDatabaseAlways<Model>
     {

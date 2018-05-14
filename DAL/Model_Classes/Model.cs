@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
 
-namespace Organaizer
+namespace DAL
 {
-    using Organaizer.Model_Classes;
+    using DAL.Model_Classes;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -22,7 +22,7 @@ namespace Organaizer
         {
             Database.SetInitializer<Model>(new MyInitializer<Model>());
         }
-       
+
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
@@ -39,15 +39,4 @@ namespace Organaizer
         public virtual DbSet<Rang_of_User> Rangs_of_User { get; set; }
 
     }
-
-   
-   
-   
-   
-   
-    
-   
-  
-   
-
 }
