@@ -29,7 +29,7 @@ namespace Organaizer
         {
             using (var ctx = new Model())
             {
-                var users = ctx.Users.ToList();         
+                List<Model_Classes.User> users = ctx.Users.ToList();         
                 var log = users.FirstOrDefault(item => item.Login == loginBox.Text && item.Password_ == passwordBox.Password);               
                 if (log != null)
                 {                   
