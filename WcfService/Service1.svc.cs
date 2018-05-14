@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using BLL;
+using WcfService.DataContracts;
 
 namespace WcfOrganizer
 {
@@ -14,22 +15,39 @@ namespace WcfOrganizer
     public class Service1 : IService1
     {
         private readonly DataBLL _bll = new DataBLL();
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            throw new NotImplementedException();
         }
+
+        public List<Diary_WCF> Show_All_Notes(string login)
+        {
+            var diary_list = _bll.Show_All_Notes(login);
+            List<Diary_WCF> diaries = new List<Diary_WCF>();
+            foreach (BLL.Diary_BLL item in diary_list)
+                diaries.Add(new Diary_WCF() { Date_ = item.Date_, Text = item.Text });
+            return diaries;
+        }
+
+        public List<Diary_WCF> Show_All_Notes()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        //public CompositeType GetDataUsingDataContract(CompositeType composite)
+        //{
+        //    if (composite == null)
+        //    {
+        //        throw new ArgumentNullException("composite");
+        //    }
+        //    if (composite.BoolValue)
+        //    {
+        //        composite.StringValue += "Suffix";
+        //    }
+        //    return composite;
+        //}
     }
 }

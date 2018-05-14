@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DAL.Model_Classes
 {
     //for simply notes
-    public class Dairy 
+    public class Diary 
     {
         public int Id { get; set; }
         public DateTime Date_ { get; set; }

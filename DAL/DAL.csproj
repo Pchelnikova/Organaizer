@@ -52,7 +52,7 @@
     <Compile Include="DataDAL.cs" />
     <Compile Include="Model_Classes\Model.cs" />
     <Compile Include="Model_Classes\Budjet_plan.cs" />
-    <Compile Include="Model_Classes\Dairy.cs" />
+    <Compile Include="Model_Classes\Diary.cs" />
     <Compile Include="Model_Classes\Event_Type.cs" />
     <Compile Include="Model_Classes\Expance.cs" />
     <Compile Include="Model_Classes\Expance_Type.cs" />

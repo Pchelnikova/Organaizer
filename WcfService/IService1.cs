@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WcfService.DataContracts;
 
 namespace WcfOrganizer
 {
@@ -14,7 +15,7 @@ namespace WcfOrganizer
     {
 
         [OperationContract]
-        string GetData(int value);
+        List<Diary_WCF> Show_All_Notes(string login);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

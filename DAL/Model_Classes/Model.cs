@@ -27,7 +27,7 @@ namespace DAL
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Dairy> Dayries { get; set; }
+        public virtual DbSet<Diary> Diaries { get; set; }
         public virtual DbSet<Wish_List> Wish_Lists { get; set; }
         public virtual DbSet<Profit> Profits { get; set; }
         public virtual DbSet<Expance> Expences { get; set; }
