@@ -33,6 +33,13 @@ namespace DAL
                 _ctx.Diaries.Add(new_note);
                 _ctx.SaveChanges();            
         }
+        public void Delete_Note (string note)
+        {
+            var diary_note = _ctx.Diaries.FirstOrDefault(d => d.Text == note.ToCharArray().Skip(8));
+            _ctx.Diaries.Remove(diary_note);
+            _ctx.SaveChanges();
+
+        }
 
 
     }

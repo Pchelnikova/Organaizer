@@ -35,6 +35,12 @@ namespace WcfOrganizer
             _bll.Add_Note(note, login);
         }
 
+        public void Delete_Note (string note)
+        {
+            if (note!=null)
+            _bll.Delete_Note(note);
+        }
+
 
 
 

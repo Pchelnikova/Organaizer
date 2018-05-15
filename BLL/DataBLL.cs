@@ -24,5 +24,10 @@ namespace BLL
         {
             _dal.Add_Note(note, login);
         }
+
+        public void Delete_Note (string note)
+        {
+            _dal.Delete_Note(note);
+        }
     }
 }
