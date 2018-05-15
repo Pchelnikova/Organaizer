@@ -35,12 +35,25 @@ namespace DAL
         }
         public void Delete_Note (string note)
         {
-            var diary_note = _ctx.Diaries.FirstOrDefault(d => d.Text == note.ToCharArray().Skip(8));
+            var diary_note = _ctx.Diaries.FirstOrDefault(d => d.Text == note);
             _ctx.Diaries.Remove(diary_note);
             _ctx.SaveChanges();
 
         }
 
+        //Budget CRUD
+
+        public List<Profit> Show_All_Profits (string login)
+        {
+            var profits = _ctx.Profits.Where(pr => pr.User.Login == login).ToList();
+            return profits;
+        }
+
+        public List<string> GetProfitsTypes ()
+        {
+            var profits_types = _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
+            return profits_types;
+        }
 
     }
    

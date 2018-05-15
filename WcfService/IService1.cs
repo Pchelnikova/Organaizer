@@ -20,6 +20,13 @@ namespace WcfOrganizer
         void Add_Note(string note, string login);
         [OperationContract]
         void Delete_Note(string note);
+       
+
+        //Budget
+        [OperationContract]
+        List<Profit_WCF> Show_All_Profits(string login);
+        [OperationContract]
+        List<string> GetProfitsTypes();
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

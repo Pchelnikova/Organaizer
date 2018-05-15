@@ -40,7 +40,20 @@ namespace WcfOrganizer
             if (note!=null)
             _bll.Delete_Note(note);
         }
+         //Budget CRUD
+         public List<Profit_WCF> Show_All_Profits (string login)
+        {
+            var profit_list = _bll.Show_All_Profits(login);
+            List<Profit_WCF> profits = new List<Profit_WCF>();
+            foreach (BLL.Profit_BLL item in profit_list)
+                profits.Add(new Profit_WCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description  });
+            return profits;           
+        }
 
+        public List<string> GetProfitsTypes()
+        {
+          return   _bll.GetProfitsTypes();
+        }
 
 
 
