@@ -41,18 +41,54 @@ namespace WcfOrganizer
             _bll.Delete_Note(note);
         }
          //Budget CRUD
-         public List<Profit_WCF> Show_All_Profits (string login)
+         public List<Profit_ExpanceWCF> Show_All_Profits (string login)
         {
             var profit_list = _bll.Show_All_Profits(login);
-            List<Profit_WCF> profits = new List<Profit_WCF>();
-            foreach (BLL.Profit_BLL item in profit_list)
-                profits.Add(new Profit_WCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description  });
+            List<Profit_ExpanceWCF> profits = new List<Profit_ExpanceWCF>();
+            foreach (BLL.Profit_ExpanceBLL item in profit_list)
+                profits.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description  });
             return profits;           
         }
+
+        public void Save_New_Profit (Profit_ExpanceWCF new_profit, string login)
+        {
+            BLL.Profit_ExpanceBLL profit = new BLL.Profit_ExpanceBLL()
+            {
+                Date_ = new_profit.Date_,
+                Sum = new_profit.Sum,
+                Description = new_profit.Description,
+                
+            };
+            _bll.Save_New_Profit(profit, login);
+        }
+        public void Save_New_Expance(Profit_ExpanceWCF new_expance, string login)
+        {
+            BLL.Profit_ExpanceBLL profit = new BLL.Profit_ExpanceBLL()
+            {
+                Date_ = new_expance.Date_,
+                Sum = new_expance.Sum,
+                Description = new_expance.Description
+            };
+            _bll.Save_New_Expance(profit, login);
+        }
+
+        public List<Profit_ExpanceWCF> Show_All_Expance(string login)
+        {
+            var expance_list = _bll.Show_All_Expance(login);
+            List<Profit_ExpanceWCF> expance = new List<Profit_ExpanceWCF>();
+            foreach (BLL.Profit_ExpanceBLL item in expance_list)
+                expance.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
+            return expance;
+        }
+
 
         public List<string> GetProfitsTypes()
         {
           return   _bll.GetProfitsTypes();
+        }
+        public List<string> GetExpanceTypes()
+        {
+            return _bll.GetExpanceTypes();
         }
 
 
