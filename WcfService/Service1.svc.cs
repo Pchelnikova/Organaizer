@@ -30,10 +30,12 @@ namespace WcfOrganizer
             return diaries;
         }
 
-        public List<Diary_WCF> Show_All_Notes()
+        public void Add_Note(string note, string login)
         {
-            throw new NotImplementedException();
+            _bll.Add_Note(note, login);
         }
+
+
 
 
 

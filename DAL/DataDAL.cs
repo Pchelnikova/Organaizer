@@ -17,5 +17,24 @@ namespace DAL
             var diaries = _ctx.Diaries.Where(note => note.User.Login == login).ToList();           
             return diaries;
         }
+
+        public void Add_Note(string note, string login)
+        {
+            var diaries = _ctx.Diaries;//.Where(d => d.User.Login == login).ToList();
+            var user = _ctx.Users.FirstOrDefault(u => u.Login == login);
+
+
+            DAL.Model_Classes.Diary new_note = new DAL.Model_Classes.Diary()
+            {
+                Date = System.DateTime.Now,
+                Text = note,
+                User = user
+            };
+                _ctx.Diaries.Add(new_note);
+                _ctx.SaveChanges();            
+        }
+
+
     }
+   
 }

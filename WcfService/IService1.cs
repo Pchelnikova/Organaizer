@@ -16,6 +16,8 @@ namespace WcfOrganizer
 
         [OperationContract]
         List<Diary_WCF> Show_All_Notes(string login);
+        [OperationContract]
+        void Add_Note(string note, string login);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
