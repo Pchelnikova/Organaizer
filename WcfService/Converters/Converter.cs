@@ -30,5 +30,15 @@ namespace WcfService.Converters
             }
             return profit_expance;
         }
+        public static List<Profit_ExpanceWCF> BLL_to_WCF_List(List<Profit_ExpanceBLL> profit_ExpenceBLL)
+        {
+            List<Profit_ExpanceWCF> profit_expance = new List<Profit_ExpanceWCF>();
+            foreach (Profit_ExpanceBLL item in profit_ExpenceBLL)
+            {
+                profit_expance.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
+            }
+            return profit_expance;
+        }
+
     }
 }

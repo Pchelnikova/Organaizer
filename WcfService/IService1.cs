@@ -15,7 +15,7 @@ namespace WcfOrganizer
     {
 
         [OperationContract]
-        List<Diary_WCF> Show_All_Notes(string login);
+        List<Diary_WCF> Get_All_Notes(string login);
         [OperationContract]
         void Add_Note(string note, string login);
         [OperationContract]
@@ -24,9 +24,9 @@ namespace WcfOrganizer
 
         //Budget
         [OperationContract]
-        List<Profit_ExpanceWCF> Show_All_Profits(string login);
+        List<Profit_ExpanceWCF> Get_All_Profits(string login);
         [OperationContract]
-        List<Profit_ExpanceWCF> Show_All_Expance(string login);
+        List<Profit_ExpanceWCF> Get_All_Expance(string login);
         [OperationContract]
         List<string> GetProfitsTypes();
         [OperationContract]
