@@ -93,6 +93,21 @@ namespace DAL
             return expance_types;
         }
 
+        public void Delete_Expence(DateTime expence_date)
+        {
+            var expence = _ctx.Expences.FirstOrDefault(d => d.Date_ == expence_date);
+            _ctx.Expences.Remove(expence);
+            _ctx.SaveChanges();
+        }
+        public void Delete_Profit(DateTime profit_date)
+        {
+            var expence = _ctx.Profits.FirstOrDefault(d => d.Date_ == profit_date);
+            _ctx.Profits.Remove(expence);
+            _ctx.SaveChanges();
+        }
+
+
+
     }
-   
+
 }

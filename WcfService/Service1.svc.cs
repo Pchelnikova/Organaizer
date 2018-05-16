@@ -24,9 +24,11 @@ namespace WcfOrganizer
         public List<Diary_WCF> Show_All_Notes(string login)
         {
             var diary_list = _bll.Show_All_Notes(login);
-            List<Diary_WCF> diaries = new List<Diary_WCF>();
+            var diaries = new List<Diary_WCF>();
             foreach (BLL.Diary_BLL item in diary_list)
+            {
                 diaries.Add(new Diary_WCF() { Date_ = item.Date_, Text = item.Text });
+            }
             return diaries;
         }
 
@@ -35,29 +37,34 @@ namespace WcfOrganizer
             _bll.Add_Note(note, login);
         }
 
-        public void Delete_Note (string note)
+        public void Delete_Note(string note)
         {
-            if (note!=null)
-            _bll.Delete_Note(note);
+            if (note != null)
+                _bll.Delete_Note(note);
         }
-         //Budget CRUD
-         public List<Profit_ExpanceWCF> Show_All_Profits (string login)
+        
+
+        /// <summary>
+        /// Method gets list of profits
+        /// <param name="login">User login in string format</param>
+        /// <returns>Returnl list of profits</returns>
+        public List<Profit_ExpanceWCF> Show_All_Profits(string login)
         {
             var profit_list = _bll.Show_All_Profits(login);
             List<Profit_ExpanceWCF> profits = new List<Profit_ExpanceWCF>();
             foreach (BLL.Profit_ExpanceBLL item in profit_list)
-                profits.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description  });
-            return profits;           
+                profits.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
+            return profits;
         }
 
-        public void Save_New_Profit (Profit_ExpanceWCF new_profit, string login)
+        public void Save_New_Profit(Profit_ExpanceWCF new_profit, string login)
         {
             BLL.Profit_ExpanceBLL profit = new BLL.Profit_ExpanceBLL()
             {
                 Date_ = new_profit.Date_,
                 Sum = new_profit.Sum,
                 Description = new_profit.Description,
-                
+
             };
             _bll.Save_New_Profit(profit, login);
         }
@@ -80,11 +87,20 @@ namespace WcfOrganizer
                 expance.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
             return expance;
         }
+        public void Delete_Expence(DateTime dateTime)
+        {
+            _bll.Delete_Expence(dateTime);
+        }
+        public void Delete_Profit(DateTime dateTime)
+        {
+            _bll.Delete_Profit(dateTime);
+        }
+
 
 
         public List<string> GetProfitsTypes()
         {
-          return   _bll.GetProfitsTypes();
+            return _bll.GetProfitsTypes();
         }
         public List<string> GetExpanceTypes()
         {
@@ -93,7 +109,7 @@ namespace WcfOrganizer
 
 
 
-
+        //Remmember to delete!!!
         //public CompositeType GetDataUsingDataContract(CompositeType composite)
         //{
         //    if (composite == null)

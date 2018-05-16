@@ -72,6 +72,14 @@ namespace BLL
             };
             _dal.Save_New_Expance(expance, new_expance.Profit_Expance_Type, login);
         }
+       public void Delete_Expence (DateTime dateTime)
+        {
+            _dal.Delete_Expence(dateTime);
+        }
+        public void Delete_Profit(DateTime dateTime)
+        {
+            _dal.Delete_Profit(dateTime);
+        }
 
         public List<string> GetProfitsTypes ()
         {
