@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using BLL.Converters;
 
 namespace BLL
 {
@@ -62,7 +63,11 @@ namespace BLL
             };
             _dal.Save_New_Profit(profit, login);
         }
-
+        public void Delete_Profit(Profit_ExpanceBLL profit_ExpanceBLL, string login)
+        {
+            var profit = Converter.BLL_to_Profit(profit_ExpanceBLL);
+            _dal.Delete_Profit(profit, login);
+        }
         public void Save_New_Expence(Profit_ExpanceBLL new_expance, string login)
         {
             DAL.Model_Classes.Expence expance = new DAL.Model_Classes.Expence()
@@ -75,14 +80,12 @@ namespace BLL
             };
             _dal.Save_New_Expance(expance,  login);
         }
-       public void Delete_Expence (DateTime dateTime)
+       public void Delete_Expence (Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {
-            _dal.Delete_Expence(dateTime);
+            var expence = Converter.BLL_to_Expence(profit_ExpanceBLL);
+            _dal.Delete_Expence(expence, login);
         }
-        public void Delete_Profit(DateTime dateTime)
-        {
-            _dal.Delete_Profit(dateTime);
-        }
+       
 
         public List<string> GetProfitsTypes ()
         {

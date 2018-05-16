@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using BLL;
 using WcfService.DataContracts;
+using WcfService.Converters;
 
 namespace WcfOrganizer
 {
@@ -68,6 +69,11 @@ namespace WcfOrganizer
             };
             _bll.Save_New_Profit(profit, login);
         }
+        public void Delete_Profit(Profit_ExpanceWCF profit_ExpanceWCF, string login)
+        {
+            var profit_ExpenceBLL = Converter.WCF_to_BLL(profit_ExpanceWCF);
+            _bll.Delete_Profit(profit_ExpenceBLL, login);
+        }
         public void Save_New_Expance(Profit_ExpanceWCF new_expance, string login)
         {
             BLL.Profit_ExpanceBLL profit = new BLL.Profit_ExpanceBLL()
@@ -87,14 +93,12 @@ namespace WcfOrganizer
                 expance.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
             return expance;
         }
-        public void Delete_Expence(DateTime dateTime)
+        public void Delete_Expence(Profit_ExpanceWCF profit_ExpanceWCF, string login)
         {
-            _bll.Delete_Expence(dateTime);
+            var profit_ExpenceBLL = Converter.WCF_to_BLL(profit_ExpanceWCF);
+            _bll.Delete_Expence(profit_ExpenceBLL, login);
         }
-        public void Delete_Profit(DateTime dateTime)
-        {
-            _bll.Delete_Profit(dateTime);
-        }
+        
 
 
 

@@ -36,9 +36,10 @@ namespace WcfOrganizer
         [OperationContract]
         void Save_New_Profit(Profit_ExpanceWCF new_profit, string login);
         [OperationContract]
-        void Delete_Expence(DateTime dateTime);
+        void Delete_Profit(Profit_ExpanceWCF profit_ExpanceWCF, string login);
         [OperationContract]
-        void Delete_Profit(DateTime dateTime);
+        void Delete_Expence(Profit_ExpanceWCF profit_ExpanceWCF, string login);
+
 
 
         [OperationContract]

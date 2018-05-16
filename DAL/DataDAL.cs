@@ -48,7 +48,6 @@ namespace DAL
             var profits = _ctx.Profits.Where(pr => pr.User.Login == login).ToList();
             return profits;
         }
-
         public void Save_New_Profit(Profit new_profit, string login)
         {
             Profit profit = new Profit()
@@ -62,9 +61,27 @@ namespace DAL
             _ctx.Profits.Add(profit);
             _ctx.SaveChanges();
         }
+        public void Delete_Profit(Profit profit, string login)
+        {
+            var profit_for_del = _ctx.Profits.FirstOrDefault(d => d.Date_ == profit.Date_ && d.Sum == profit.Sum && d.Description == profit.Description && d.User == _ctx.Users.FirstOrDefault(u => u.Login == login) && d.Profit_Type == _ctx.Profit_Types.FirstOrDefault(e => e.Name == profit.Profit_Type.Name));
+            _ctx.Profits.Remove(profit_for_del);
+            _ctx.SaveChanges();
+        }
+
+        //Expence CRUD
+        public List<Expence> Show_All_Expance(string login)
+        {
+            var expance = _ctx.Expences.Where(pr => pr.User.Login == login).ToList();
+            return expance;
+        }
+        public List<string> GetProfitsTypes ()
+        {
+            var profits_types = _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
+            return profits_types;
+        }
         public void Save_New_Expance(Expence new_expance, string login)
         {
-           Expence expence = new Expence()
+            Expence expence = new Expence()
             {
                 Date_ = new_expance.Date_,
                 Sum = new_expance.Sum,
@@ -75,37 +92,18 @@ namespace DAL
             _ctx.Expences.Add(expence);
             _ctx.SaveChanges();
         }
-        public List<Expence> Show_All_Expance(string login)
-        {
-            var expance = _ctx.Expences.Where(pr => pr.User.Login == login).ToList();
-            return expance;
-        }
-
-        public List<string> GetProfitsTypes ()
-        {
-            var profits_types = _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
-            return profits_types;
-        }
-
         public List<string> GetExpanceTypes()
         {
             var expance_types = _ctx.Expances_Types.Select(pr => pr.Name.ToString()).ToList();
             return expance_types;
         }
-
-        public void Delete_Expence(DateTime expence_date)
+        public void Delete_Expence(Expence expence, string login)
         {
-            var expence = _ctx.Expences.FirstOrDefault(d => d.Date_ == expence_date);
-            _ctx.Expences.Remove(expence);
+            var expence_for_del = _ctx.Expences.FirstOrDefault(d => d.Date_ == expence.Date_ && d.Sum == expence.Sum && d.Description == expence.Description && d.User == _ctx.Users.FirstOrDefault(u => u.Login == login) && d.Expence_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == expence.Expence_Type.Name));
+            _ctx.Expences.Remove(expence_for_del);
             _ctx.SaveChanges();
         }
-        public void Delete_Profit(DateTime profit_date)
-        {
-            var expence = _ctx.Profits.FirstOrDefault(d => d.Date_ == profit_date);
-            _ctx.Profits.Remove(expence);
-            _ctx.SaveChanges();
-        }
-
+       
 
 
     }
