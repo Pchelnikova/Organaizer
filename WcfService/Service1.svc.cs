@@ -64,7 +64,7 @@ namespace WcfOrganizer
                 Date_ = new_profit.Date_,
                 Sum = new_profit.Sum,
                 Description = new_profit.Description,
-
+                Profit_Expance_Type = new_profit.Profit_Expance_Type
             };
             _bll.Save_New_Profit(profit, login);
         }
@@ -76,7 +76,7 @@ namespace WcfOrganizer
                 Sum = new_expance.Sum,
                 Description = new_expance.Description
             };
-            _bll.Save_New_Expance(profit, login);
+            _bll.Save_New_Expence(profit, login);
         }
 
         public List<Profit_ExpanceWCF> Show_All_Expance(string login)

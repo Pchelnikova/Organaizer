@@ -30,10 +30,10 @@ namespace DAL
         public virtual DbSet<Diary> Diaries { get; set; }
         public virtual DbSet<Wish_List> Wish_Lists { get; set; }
         public virtual DbSet<Profit> Profits { get; set; }
-        public virtual DbSet<Expance> Expences { get; set; }
+        public virtual DbSet<Expence> Expences { get; set; }
         public virtual DbSet<Budjet_plan> Budjet_plans { get; set; }
         public virtual DbSet<Profit_Type> Profit_Types { get; set; }
-        public virtual DbSet<Expance_Type> Expances_Types { get; set; }
+        public virtual DbSet<Expence_Type> Expances_Types { get; set; }
         public virtual DbSet<Event_Type> Event_Types { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Rang_of_User> Rangs_of_User { get; set; }

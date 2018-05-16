@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Model_Classes
 {
-    public class Expance 
+    public class Expence 
     {
         public int Id { get; set; }
         public DateTime Date_ { get; set; }
@@ -14,7 +14,7 @@ namespace DAL.Model_Classes
         public string Description { get; set; }
 
         //EF navigation property
-        public virtual Expance_Type Expance_Type { get; set; } 
+        public virtual Expence_Type Expence_Type { get; set; } 
         public virtual User User { get; set; } 
     }
 }

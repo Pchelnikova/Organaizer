@@ -17,7 +17,7 @@ namespace DAL.Model_Classes
         public virtual ICollection<Wish_List> Wish_List { get; set; } 
         public virtual ICollection<Diary> Dairy { get; set; }
         public virtual ICollection<Profit> Profit { get; set; }
-        public virtual ICollection<Expance> Expance { get; set; }
+        public virtual ICollection<Expence> Expance { get; set; }
         public virtual ICollection<Budjet_plan> Budjet_Plan { get; set; }
     }
 }

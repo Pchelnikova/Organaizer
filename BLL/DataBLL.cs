@@ -45,7 +45,7 @@ namespace BLL
 
             var expance_list = _dal.Show_All_Expance(login);
             List<Profit_ExpanceBLL> expence = new List<Profit_ExpanceBLL>();
-            foreach (DAL.Model_Classes.Expance item in expance_list)
+            foreach (DAL.Model_Classes.Expence item in expance_list)
                 expence.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
             return expence;
         }
@@ -57,20 +57,23 @@ namespace BLL
                 Date_ = new_profit.Date_,
                 Sum = new_profit.Sum,
                 Description = new_profit.Description,
-               
+                User = new DAL.Model_Classes.User(),
+                Profit_Type = new DAL.Model_Classes.Profit_Type()                
             };
-            _dal.Save_New_Profit(profit, new_profit.Profit_Expance_Type, login);
+            _dal.Save_New_Profit(profit, login);
         }
 
-        public void Save_New_Expance(Profit_ExpanceBLL new_expance, string login)
+        public void Save_New_Expence(Profit_ExpanceBLL new_expance, string login)
         {
-            DAL.Model_Classes.Expance expance = new DAL.Model_Classes.Expance()
+            DAL.Model_Classes.Expence expance = new DAL.Model_Classes.Expence()
             {
                 Date_ = new_expance.Date_,
                 Sum = new_expance.Sum,
-                Description = new_expance.Description
+                Description = new_expance.Description,
+                User = new DAL.Model_Classes.User(),
+                Expence_Type = new DAL.Model_Classes.Expence_Type()
             };
-            _dal.Save_New_Expance(expance, new_expance.Profit_Expance_Type, login);
+            _dal.Save_New_Expance(expance,  login);
         }
        public void Delete_Expence (DateTime dateTime)
         {

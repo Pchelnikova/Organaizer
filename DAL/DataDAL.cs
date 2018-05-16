@@ -49,33 +49,33 @@ namespace DAL
             return profits;
         }
 
-        public void Save_New_Profit(Profit new_profit, string profit_type, string login)
+        public void Save_New_Profit(Profit new_profit, string login)
         {
             Profit profit = new Profit()
             {
                 Date_ = new_profit.Date_,
                 Sum = new_profit.Sum,
                 User = _ctx.Users.FirstOrDefault(u => u.Login == login),
-                Profit_Type = _ctx.Profit_Types.FirstOrDefault(p => p.Name == profit_type),
-                Description = new_profit.Description
+            Profit_Type = _ctx.Profit_Types.FirstOrDefault(p => p.Name == new_profit.Profit_Type.Name)
+
             };
-            _ctx.Profits.Add(new_profit);
+            _ctx.Profits.Add(profit);
             _ctx.SaveChanges();
         }
-        public void Save_New_Expance(Expance new_expance, string expance_type, string login)
+        public void Save_New_Expance(Expence new_expance, string login)
         {
-           Expance profit = new Expance()
+           Expence expence = new Expence()
             {
                 Date_ = new_expance.Date_,
                 Sum = new_expance.Sum,
                 User = _ctx.Users.FirstOrDefault(u => u.Login == login),
-                Expance_Type = _ctx.Expances_Types.FirstOrDefault(p => p.Name == expance_type),
+                Expence_Type = _ctx.Expances_Types.FirstOrDefault(p => p.Name == new_expance.Expence_Type.Name),
                 Description = new_expance.Description
             };
-            _ctx.Expences.Add(new_expance);
+            _ctx.Expences.Add(expence);
             _ctx.SaveChanges();
         }
-        public List<Expance> Show_All_Expance(string login)
+        public List<Expence> Show_All_Expance(string login)
         {
             var expance = _ctx.Expences.Where(pr => pr.User.Login == login).ToList();
             return expance;

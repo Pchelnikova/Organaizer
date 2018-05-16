@@ -39,42 +39,42 @@ namespace DAL.Model_Classes
             };
             context.Profit_Types.AddRange(new List<Profit_Type> { Salary, Dividents, Present });
             context.SaveChanges();
-            Expance_Type Food = new Expance_Type()
+            Expence_Type Food = new Expence_Type()
             {
                 Name = "FOOD",
                 Description = "Products, drinks"
             };
-            Expance_Type Shopping = new Expance_Type()
+            Expence_Type Shopping = new Expence_Type()
             {
                 Name = "SHOPPING",
                 Description = "Clothes, shoes, accessories"
             };
-            Expance_Type Household = new Expance_Type()
+            Expence_Type Household = new Expence_Type()
             {
                 Name = "HOUSEHOLD",
                 Description = "Everyday expances for house: washing powder, dishers itc"
             };
-            Expance_Type Apartment = new Expance_Type()
+            Expence_Type Apartment = new Expence_Type()
             {
                 Name = "APARTMENT",
                 Description = "Rest, communal payment"
             };
-            Expance_Type Transport = new Expance_Type()
+            Expence_Type Transport = new Expence_Type()
             {
                 Name = "TRANSPORT",
                 Description = "Petrol, fuel, repair of car"
             };
-            Expance_Type Holiday = new Expance_Type()
+            Expence_Type Holiday = new Expence_Type()
             {
                 Name = "HOLIDAY",
                 Description = "Presents, cinema, HoReCa, vacation"
             };
-            Expance_Type Connection = new Expance_Type()
+            Expence_Type Connection = new Expence_Type()
             {
                 Name = "CONNECTION",
                 Description = "Telephone, internet, post"
             };
-            context.Expances_Types.AddRange(new List<Expance_Type> { Food, Shopping, Household, Apartment, Transport, Connection });
+            context.Expances_Types.AddRange(new List<Expence_Type> { Food, Shopping, Household, Apartment, Transport, Connection });
             context.SaveChanges();
             Rang_of_User Senior = new Rang_of_User()
             {
@@ -133,13 +133,13 @@ namespace DAL.Model_Classes
                                      new Profit { Date_ = new System.DateTime(2018, 1, 19), Sum = 2000, Description = "HappyBirthday!!!", Profit_Type = Present, User = First },
                                      new Profit { Date_ = new System.DateTime(2018, 2, 15), Sum = 5000, Description = "Insurance, PRIVATBANK", Profit_Type = Dividents, User = First} });
             context.SaveChanges();
-            context.Expences.AddRange(new List<Expance>
-                                   { new Expance {Date_ = new System.DateTime(2018, 1, 2),  Sum = 500, Description = "Supermarket", Expance_Type = Food, User = First },
-                                     new Expance {Date_ = new System.DateTime(2018, 1, 5),  Sum = 980, Description = "Petrol", Expance_Type = Transport, User = First },
-                                     new Expance {Date_ = new System.DateTime(2018, 1, 15),  Sum = 400, Description = "Market", Expance_Type = Food, User = First },
-                                     new Expance {Date_ = new System.DateTime(2018, 1, 20), Sum = 500, Description = "Bedlinen", Expance_Type = Household, User = First },
-                                     new Expance {Date_ = new System.DateTime(2018, 1, 22), Sum = 1500, Description = "Jeans and top", Expance_Type = Shopping, User = First },
-                                     new Expance {Date_ = new System.DateTime(2018, 2, 2),  Sum = 5000, Description = "Pay the bills", Expance_Type = Apartment, User = First } });
+            context.Expences.AddRange(new List<Expence>
+                                   { new Expence {Date_ = new System.DateTime(2018, 1, 2),  Sum = 500, Description = "Supermarket", Expence_Type = Food, User = First },
+                                     new Expence {Date_ = new System.DateTime(2018, 1, 5),  Sum = 980, Description = "Petrol", Expence_Type = Transport, User = First },
+                                     new Expence {Date_ = new System.DateTime(2018, 1, 15),  Sum = 400, Description = "Market", Expence_Type = Food, User = First },
+                                     new Expence {Date_ = new System.DateTime(2018, 1, 20), Sum = 500, Description = "Bedlinen", Expence_Type = Household, User = First },
+                                     new Expence {Date_ = new System.DateTime(2018, 1, 22), Sum = 1500, Description = "Jeans and top", Expence_Type = Shopping, User = First },
+                                     new Expence {Date_ = new System.DateTime(2018, 2, 2),  Sum = 5000, Description = "Pay the bills", Expence_Type = Apartment, User = First } });
             context.SaveChanges();
            
              

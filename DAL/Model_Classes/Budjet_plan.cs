@@ -15,7 +15,7 @@ namespace DAL.Model_Classes
         public string Description { get; set; }
 
         //EF navigation properties
-        public virtual Expance_Type Expance_Type { get; set; } 
+        public virtual Expence_Type Expance_Type { get; set; } 
         public virtual User User { get; set; } 
     }
 }

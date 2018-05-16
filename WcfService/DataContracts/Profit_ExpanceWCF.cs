@@ -16,6 +16,6 @@ namespace WcfService.DataContracts
         [DataMember]
         public string Description { get; set; }
         [DataMember]
-        public string Profit_Expanc_Type { get; set; }
+        public string Profit_Expance_Type { get; set; }
     }
 }
