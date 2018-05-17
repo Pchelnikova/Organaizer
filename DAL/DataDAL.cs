@@ -80,8 +80,8 @@ namespace DAL
         }
         public List<string> GetProfitsTypes ()
         {
-            var profits_types = _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
-            return profits_types;
+             
+            return _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
         }
         public void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login)
         {

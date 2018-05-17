@@ -17,11 +17,6 @@ namespace WcfOrganizer
     {
         private readonly DataBLL _bll = new DataBLL();
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Diary_WCF> Get_All_Notes(string login)
         {
             var diary_list = _bll.Show_All_Notes(login);
