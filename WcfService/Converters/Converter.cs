@@ -26,7 +26,7 @@ namespace WcfService.Converters
             List<Profit_ExpanceBLL> profit_expance = new List<Profit_ExpanceBLL>();
             foreach (Profit_ExpanceWCF item in profit_ExpenceWCF)
             {
-                profit_expance.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
+                profit_expance.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Profit_Expance_Type });
             }
             return profit_expance;
         }
@@ -35,7 +35,7 @@ namespace WcfService.Converters
             List<Profit_ExpanceWCF> profit_expance = new List<Profit_ExpanceWCF>();
             foreach (Profit_ExpanceBLL item in profit_ExpenceBLL)
             {
-                profit_expance.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
+                profit_expance.Add(new Profit_ExpanceWCF() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description,Profit_Expance_Type = item.Profit_Expance_Type });
             }
             return profit_expance;
         }

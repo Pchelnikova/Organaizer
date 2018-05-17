@@ -31,59 +31,36 @@ namespace BLL
             _dal.Delete_Note(note);
         }
         //Budget CRUD
-        public List<Profit_ExpanceBLL> Show_All_Profits(string login)
+        public List<Profit_ExpanceBLL> Get_All_Profits(string login)
         {
-
-            var profit_list = _dal.Show_All_Profits(login);
-            List<Profit_ExpanceBLL> profits = new List<Profit_ExpanceBLL>();
-            foreach (DAL.Model_Classes.Profit item in profit_list)
-                profits.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum =item.Sum, Description = item.Description });
-            return profits;
-
+            return Converters.Converter.Profit_to_BLL_List(_dal.Get_All_Profits(login));
         }
-        public List<Profit_ExpanceBLL> Show_All_Expance(string login)
+        public List<Profit_ExpanceBLL> Get_All_Expance(string login)
         {
 
             var expance_list = _dal.Show_All_Expance(login);
             List<Profit_ExpanceBLL> expence = new List<Profit_ExpanceBLL>();
             foreach (DAL.Model_Classes.Expence item in expance_list)
-                expence.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description });
+                expence.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expence_Type.Name });
             return expence;
         }
 
-        public void Save_New_Profit(Profit_ExpanceBLL new_profit, string login)
+        public void Save_New_Profit(Profit_ExpanceBLL new_profit, string Type, string login)
         {
-            DAL.Model_Classes.Profit profit = new DAL.Model_Classes.Profit()
-            {
-                Date_ = new_profit.Date_,
-                Sum = new_profit.Sum,
-                Description = new_profit.Description,
-                User = new DAL.Model_Classes.User(),
-                Profit_Type = new DAL.Model_Classes.Profit_Type()                
-            };
-            _dal.Save_New_Profit(profit, login);
+            _dal.Save_New_Profit(new_profit.Date_, new_profit.Sum, new_profit.Description, Type, login);
         }
         public void Delete_Profit(Profit_ExpanceBLL profit_ExpanceBLL, string login)
-        {
-            var profit = Converter.BLL_to_Profit(profit_ExpanceBLL);
-            _dal.Delete_Profit(profit, login);
+        {            
+            _dal.Delete_Profit(Converter.BLL_to_Profit(profit_ExpanceBLL, login));
         }
-        public void Save_New_Expence(Profit_ExpanceBLL new_expance, string login)
+        public void Save_New_Expence(Profit_ExpanceBLL new_expance, string Type, string login)
         {
-            DAL.Model_Classes.Expence expance = new DAL.Model_Classes.Expence()
-            {
-                Date_ = new_expance.Date_,
-                Sum = new_expance.Sum,
-                Description = new_expance.Description,
-                User = new DAL.Model_Classes.User(),
-                Expence_Type = new DAL.Model_Classes.Expence_Type()
-            };
-            _dal.Save_New_Expance(expance,  login);
+           
+            _dal.Save_New_Expance(new_expance.Date_, new_expance.Sum, new_expance.Description, Type, login);
         }
        public void Delete_Expence (Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {
-            var expence = Converter.BLL_to_Expence(profit_ExpanceBLL);
-            _dal.Delete_Expence(expence, login);
+            _dal.Delete_Expence(Converter.BLL_to_Expence(profit_ExpanceBLL), login);
         }
        
 

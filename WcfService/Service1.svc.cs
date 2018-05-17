@@ -44,23 +44,23 @@ namespace WcfOrganizer
         }
         public List<Profit_ExpanceWCF> Get_All_Profits(string login)
         {
-            return Converter.BLL_to_WCF_List(_bll.Show_All_Expance(login));
+            return Converter.BLL_to_WCF_List(_bll.Get_All_Profits(login));
         }
-        public void Save_New_Profit(Profit_ExpanceWCF new_profit, string login)
+        public void Save_New_Profit(Profit_ExpanceWCF new_profit, string Type, string login)
         {
-            _bll.Save_New_Profit(Converter.WCF_to_BLL(new_profit), login);
+            _bll.Save_New_Profit(Converter.WCF_to_BLL(new_profit), Type, login);
         }
         public void Delete_Profit(Profit_ExpanceWCF profit_ExpanceWCF, string login)
         {
             _bll.Delete_Profit(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
-        public void Save_New_Expance(Profit_ExpanceWCF new_expance, string login)
+        public void Save_New_Expance(Profit_ExpanceWCF new_expance, string Type, string login)
         {            
-            _bll.Save_New_Expence(Converter.WCF_to_BLL(new_expance), login);
+            _bll.Save_New_Expence(Converter.WCF_to_BLL(new_expance), Type, login);
         }
         public List<Profit_ExpanceWCF> Get_All_Expance(string login)
         {          
-           return Converter.BLL_to_WCF_List(_bll.Show_All_Expance(login));                       
+           return Converter.BLL_to_WCF_List(_bll.Get_All_Expance(login));                       
         }
         public void Delete_Expence(Profit_ExpanceWCF profit_ExpanceWCF, string login)
         {

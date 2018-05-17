@@ -32,9 +32,9 @@ namespace WcfOrganizer
         [OperationContract]
         List<string> GetExpanceTypes();
         [OperationContract]
-        void Save_New_Expance(Profit_ExpanceWCF new_expance, string login);
+        void Save_New_Expance(Profit_ExpanceWCF new_expance, string Type, string login);
         [OperationContract]
-        void Save_New_Profit(Profit_ExpanceWCF new_profit, string login);
+        void Save_New_Profit(Profit_ExpanceWCF new_profit, string Type, string login);
         [OperationContract]
         void Delete_Profit(Profit_ExpanceWCF profit_ExpanceWCF, string login);
         [OperationContract]

@@ -43,29 +43,33 @@ namespace DAL
 
         //Budget CRUD
 
-        public List<Profit> Show_All_Profits (string login)
+        public List<Profit> Get_All_Profits (string login)
         {
-            var profits = _ctx.Profits.Where(pr => pr.User.Login == login).ToList();
+            var profits = _ctx.Profits.Where(pr => pr.User.Id == (_ctx.Users.FirstOrDefault(u => u.Login == login)).Id).ToList();
             return profits;
         }
-        public void Save_New_Profit(Profit new_profit, string login)
+        public void Save_New_Profit(DateTime date, Decimal sum, string description, string Type, string login)
         {
             Profit profit = new Profit()
             {
-                Date_ = new_profit.Date_,
-                Sum = new_profit.Sum,
+                Date_ = date,
+                Sum = sum,
+                Description = description,
                 User = _ctx.Users.FirstOrDefault(u => u.Login == login),
-            Profit_Type = _ctx.Profit_Types.FirstOrDefault(p => p.Name == new_profit.Profit_Type.Name)
-
+                Profit_Type = _ctx.Profit_Types.FirstOrDefault(p => p.Name == Type)
+                
             };
             _ctx.Profits.Add(profit);
             _ctx.SaveChanges();
         }
-        public void Delete_Profit(Profit profit, string login)
+        public void Delete_Profit(Profit profit)
         {
-            var profit_for_del = _ctx.Profits.FirstOrDefault(d => d.Date_ == profit.Date_ && d.Sum == profit.Sum && d.Description == profit.Description && d.User == _ctx.Users.FirstOrDefault(u => u.Login == login) && d.Profit_Type == _ctx.Profit_Types.FirstOrDefault(e => e.Name == profit.Profit_Type.Name));
-            _ctx.Profits.Remove(profit_for_del);
-            _ctx.SaveChanges();
+            var profit_for_del = _ctx.Profits.FirstOrDefault(d => (d.Date_ == profit.Date_ && d.Sum == profit.Sum && d.Description == profit.Description && d.User == _ctx.Users.FirstOrDefault(u => u.Login == profit.User.Login) && d.Profit_Type == _ctx.Profit_Types.FirstOrDefault(e => e.Name == profit.Profit_Type.Name)));
+            if (profit_for_del != null)
+            {
+                _ctx.Profits.Remove(profit_for_del);
+                _ctx.SaveChanges();
+            }
         }
 
         //Expence CRUD
@@ -79,15 +83,15 @@ namespace DAL
             var profits_types = _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
             return profits_types;
         }
-        public void Save_New_Expance(Expence new_expance, string login)
+        public void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login)
         {
             Expence expence = new Expence()
             {
-                Date_ = new_expance.Date_,
-                Sum = new_expance.Sum,
+                Date_ = date,
+                Sum = sum,
                 User = _ctx.Users.FirstOrDefault(u => u.Login == login),
-                Expence_Type = _ctx.Expances_Types.FirstOrDefault(p => p.Name == new_expance.Expence_Type.Name),
-                Description = new_expance.Description
+                Expence_Type = _ctx.Expances_Types.FirstOrDefault(p => p.Name == Type),
+                Description = description
             };
             _ctx.Expences.Add(expence);
             _ctx.SaveChanges();
