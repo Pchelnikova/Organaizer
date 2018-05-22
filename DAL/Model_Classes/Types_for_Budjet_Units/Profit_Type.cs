@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace DAL.Model_Classes
 {
     public class Profit_Type : AbstrType_for_Budjet
-    {
-        
+    {       
 
     }
 }
