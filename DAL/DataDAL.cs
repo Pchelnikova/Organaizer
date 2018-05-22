@@ -73,7 +73,7 @@ namespace DAL
         }
 
         //Expence CRUD
-        public List<Expence> Show_All_Expance(string login)
+        public List<Expence> Get_All_Expance(string login)
         {
             var expance = _ctx.Expences.Where(pr => pr.User.Login == login).ToList();
             return expance;

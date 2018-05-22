@@ -37,12 +37,8 @@ namespace BLL
         }
         public List<Profit_ExpanceBLL> Get_All_Expance(string login)
         {
-
-            var expance_list = _dal.Show_All_Expance(login);
-            List<Profit_ExpanceBLL> expence = new List<Profit_ExpanceBLL>();
-            foreach (DAL.Model_Classes.Expence item in expance_list)
-                expence.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expence_Type.Name });
-            return expence;
+            return Converters.Converter.Expence_to_BLL_List(_dal.Get_All_Expance(login));
+            
         }
 
         public void Save_New_Profit(Profit_ExpanceBLL new_profit, string Type, string login)

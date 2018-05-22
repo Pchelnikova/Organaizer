@@ -42,5 +42,13 @@ namespace BLL.Converters
             return profitsBLL;
 
         }
+        public static List<Profit_ExpanceBLL> Expence_to_BLL_List(List<Expence> expence)
+        {
+            List<Profit_ExpanceBLL> expenceBLL = new List<Profit_ExpanceBLL>();
+            foreach (DAL.Model_Classes.Expence item in expence)
+                expenceBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expence_Type.Name });
+            return expenceBLL;
+
+        }
     }
 }
