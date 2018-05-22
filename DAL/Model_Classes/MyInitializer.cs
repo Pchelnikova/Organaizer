@@ -104,7 +104,7 @@ namespace DAL.Model_Classes
             context.Users.Add(Second);
             context.SaveChanges();
 
-            Budjet_plan Budjet = new Budjet_plan()
+            Plan Budjet = new Plan()
             {
                 Date_ = new System.DateTime(2018, 03, 14),
                 Expance_Type = Holiday,
@@ -114,11 +114,11 @@ namespace DAL.Model_Classes
             };
             context.Budjet_plans.Add(Budjet);
             context.SaveChanges();
-            Wish_List Vacation = new Wish_List
+            Wish Vacation = new Wish
             {
                 Date_ = new System.DateTime(2018, 7, 1),
-                Text = "Trip to the seaside",
-                Sum_plan = 10000,
+                Description = "Trip to the seaside",
+                Sum = 10000,
                 Agreement = false,
                 Event = Event_Dream,
                 User = First

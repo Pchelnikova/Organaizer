@@ -12,6 +12,6 @@ namespace DAL.Model_Classes
             public string Name { get; set; }
             public string Description { get; set; }
         //EF navigation property
-        public virtual ICollection<Wish_List> Wish_List { get; set; }
+        public virtual ICollection<Wish> Wish_List { get; set; }
         }
 }

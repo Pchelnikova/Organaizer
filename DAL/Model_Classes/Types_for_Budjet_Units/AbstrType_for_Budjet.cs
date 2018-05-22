@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Model_Classes
 {
-    public class Expence 
+    public abstract class AbstrType_for_Budjet
     {
         public int Id { get; set; }
-        public DateTime Date_ { get; set; }
-        public decimal Sum { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-
         //EF navigation property
-        public virtual Expence_Type Expence_Type { get; set; } 
-        public virtual User User { get; set; } 
+        public virtual ICollection<Budjet_Unit> Budjet_Units { get; set; }
     }
 }

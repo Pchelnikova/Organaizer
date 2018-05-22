@@ -28,10 +28,10 @@ namespace DAL
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         public virtual DbSet<Diary> Diaries { get; set; }
-        public virtual DbSet<Wish_List> Wish_Lists { get; set; }
+        public virtual DbSet<Wish> Wish_Lists { get; set; }
         public virtual DbSet<Profit> Profits { get; set; }
         public virtual DbSet<Expence> Expences { get; set; }
-        public virtual DbSet<Budjet_plan> Budjet_plans { get; set; }
+        public virtual DbSet<Plan> Budjet_plans { get; set; }
         public virtual DbSet<Profit_Type> Profit_Types { get; set; }
         public virtual DbSet<Expence_Type> Expances_Types { get; set; }
         public virtual DbSet<Event_Type> Event_Types { get; set; }

@@ -6,15 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Model_Classes
 {
-    public class Profit
+    public class Profit : Budjet_Unit
     {
-        public int Id { get; set; }
-        public DateTime Date_ { get; set; }
-        public decimal Sum { get; set; }
-        public string Description { get; set; }
-
         //EF navigation properties
         public virtual Profit_Type Profit_Type { get; set; } 
-        public virtual User User { get; set; } 
     }
 }

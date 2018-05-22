@@ -50,17 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataDAL.cs" />
+    <Compile Include="Model_Classes\Budget_Units\Budjet_Unit.cs" />
     <Compile Include="Model_Classes\Model.cs" />
-    <Compile Include="Model_Classes\Budjet_plan.cs" />
+    <Compile Include="Model_Classes\Budget_Units\Plan.cs" />
     <Compile Include="Model_Classes\Diary.cs" />
-    <Compile Include="Model_Classes\Event_Type.cs" />
-    <Compile Include="Model_Classes\Expence.cs" />
-    <Compile Include="Model_Classes\Expence_Type.cs" />
-    <Compile Include="Model_Classes\Profit.cs" />
-    <Compile Include="Model_Classes\Profit_Type.cs" />
-    <Compile Include="Model_Classes\Rang_of_User.cs" />
-    <Compile Include="Model_Classes\User.cs" />
-    <Compile Include="Model_Classes\Wish_List.cs" />
+    <Compile Include="Model_Classes\Types_for_Budjet_Units\Event_Type.cs" />
+    <Compile Include="Model_Classes\Budget_Units\Expence.cs" />
+    <Compile Include="Model_Classes\Types_for_Budjet_Units\Expence_Type.cs" />
+    <Compile Include="Model_Classes\Budget_Units\Profit.cs" />
+    <Compile Include="Model_Classes\Types_for_Budjet_Units\Profit_Type.cs" />
+    <Compile Include="Model_Classes\User\Rang_of_User.cs" />
+    <Compile Include="Model_Classes\Types_for_Budjet_Units\AbstrType_for_Budjet.cs" />
+    <Compile Include="Model_Classes\User\User.cs" />
+    <Compile Include="Model_Classes\Budget_Units\Wish.cs" />
     <Compile Include="Model_Classes\MyInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
