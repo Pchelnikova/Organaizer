@@ -78,11 +78,7 @@ namespace DAL
             var expance = _ctx.Expences.Where(pr => pr.User.Login == login).ToList();
             return expance;
         }
-        public List<string> GetProfitsTypes ()
-        {
-             
-            return _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
-        }
+        
         public void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login)
         {
             Expence expence = new Expence()
@@ -96,17 +92,55 @@ namespace DAL
             _ctx.Expences.Add(expence);
             _ctx.SaveChanges();
         }
-        public List<string> GetExpanceTypes()
-        {
-            var expance_types = _ctx.Expances_Types.Select(pr => pr.Name.ToString()).ToList();
-            return expance_types;
-        }
         public void Delete_Expence(Expence expence, string login)
         {
             var expence_for_del = _ctx.Expences.FirstOrDefault(d => d.Date_ == expence.Date_ && d.Sum == expence.Sum && d.Description == expence.Description && d.User == _ctx.Users.FirstOrDefault(u => u.Login == login) && d.Expence_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == expence.Expence_Type.Name));
             _ctx.Expences.Remove(expence_for_del);
             _ctx.SaveChanges();
         }
+
+        //Plan CRUD
+        public List<Plan> Get_All_Plan(string login)
+        {
+            var plans = _ctx.Plans.Where(pr => pr.User.Id == (_ctx.Users.FirstOrDefault(u => u.Login == login)).Id).ToList();
+            return plans;
+        }
+        public void Save_New_Plan(DateTime date, Decimal sum, string description, string Type, string login)
+        {
+            Plan expence = new Plan()
+            {
+                Date_ = date,
+                Sum = sum,
+                User = _ctx.Users.FirstOrDefault(u => u.Login == login),
+                Expance_Type = _ctx.Expances_Types.FirstOrDefault(p => p.Name == Type),
+                Description = description
+            };
+            _ctx.Plans.Add(expence);
+            _ctx.SaveChanges();
+        }
+        public void Delete_Plan(Plan plan, string login)
+        {
+            if (plan.Expance_Type == null)
+                {
+                plan.Expance_Type = _ctx.Expances_Types.FirstOrDefault(e => e.Name == "NONE!") ;
+                }
+            var plan_for_del = _ctx.Plans.FirstOrDefault(d => d.Date_ == plan.Date_ && d.Sum == plan.Sum && d.Description == plan.Description && d.User == _ctx.Users.FirstOrDefault(u => u.Login == login) && d.Expance_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == plan.Expance_Type.Name));
+            _ctx.Plans.Remove(plan_for_del);
+            _ctx.SaveChanges();
+        }
+
+        //Types
+        public List<string> GetExpanceTypes()
+        {
+            var expance_types = _ctx.Expances_Types.Select(pr => pr.Name.ToString()).ToList();
+            return expance_types;
+        }
+        public List<string> GetProfitsTypes()
+        {
+
+            return _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
+        }
+       
        
 
 

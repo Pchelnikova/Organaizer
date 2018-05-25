@@ -39,6 +39,11 @@ namespace DAL.Model_Classes
             };
             context.Profit_Types.AddRange(new List<Profit_Type> { Salary, Dividents, Present });
             context.SaveChanges();
+            Expence_Type None = new Expence_Type()
+            {
+                Name = "NONE!",
+                Description = "Need for EDIT!"
+            };
             Expence_Type Food = new Expence_Type()
             {
                 Name = "FOOD",
@@ -108,17 +113,17 @@ namespace DAL.Model_Classes
             {
                 Date_ = new System.DateTime(2018, 03, 14),
                 Expance_Type = Holiday,
-                Sum = 1000,
-                Description = "Masha's Birthday",
+                Sum = 30000,
+                Description = "Summer vacation!",
                 User = First
             };
-            context.Budjet_plans.Add(Budjet);
+            context.Plans.Add(Budjet);
             context.SaveChanges();
             Wish Vacation = new Wish
             {
-                Date_ = new System.DateTime(2018, 7, 1),
+                Date_ = new System.DateTime(2019, 7, 1),
                 Description = "Trip to the seaside",
-                Sum = 10000,
+                Sum = 50000,
                 Agreement = false,
                 Event = Event_Dream,
                 User = First

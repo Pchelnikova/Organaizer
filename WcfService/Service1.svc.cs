@@ -61,10 +61,23 @@ namespace WcfOrganizer
         {
             _bll.Delete_Expence(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
+
+        //Plans
+        public void Save_New_Plan(Profit_ExpanceWCF new_plan, string Type, string login)
+        {
+            _bll.Save_New_Plan(Converter.WCF_to_BLL(new_plan), Type, login);
+        }
+        public List<Profit_ExpanceWCF> Get_All_Plans(string login)
+        {
+            return Converter.BLL_to_WCF_List(_bll.Get_All_Plans(login));
+        }
+        public void Delete_Plan(Profit_ExpanceWCF profit_ExpanceWCF, string login)
+        {
+            _bll.Delete_Plan(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
+        }
+
         
-
-
-
+        //Types
         public List<string> GetProfitsTypes()
         {
             return _bll.GetProfitsTypes();

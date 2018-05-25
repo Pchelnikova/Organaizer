@@ -28,6 +28,8 @@ namespace WcfOrganizer
         [OperationContract]
         List<Profit_ExpanceWCF> Get_All_Expance(string login);
         [OperationContract]
+        List<Profit_ExpanceWCF> Get_All_Plans(string login);
+        [OperationContract]
         List<string> GetProfitsTypes();
         [OperationContract]
         List<string> GetExpanceTypes();
@@ -36,9 +38,13 @@ namespace WcfOrganizer
         [OperationContract]
         void Save_New_Profit(Profit_ExpanceWCF new_profit, string Type, string login);
         [OperationContract]
+        void Save_New_Plan(Profit_ExpanceWCF new_expance, string Type, string login);
+        [OperationContract]
         void Delete_Profit(Profit_ExpanceWCF profit_ExpanceWCF, string login);
         [OperationContract]
-        void Delete_Expence(Profit_ExpanceWCF profit_ExpanceWCF, string login);       
+        void Delete_Expence(Profit_ExpanceWCF profit_ExpanceWCF, string login);
+        [OperationContract]
+        void Delete_Plan(Profit_ExpanceWCF profit_ExpanceWCF, string login);
     }
 
 

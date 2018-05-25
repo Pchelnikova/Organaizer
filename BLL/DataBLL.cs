@@ -37,34 +37,47 @@ namespace BLL
         }
         public List<Profit_ExpanceBLL> Get_All_Expance(string login)
         {
-            return Converters.Converter.Expence_to_BLL_List(_dal.Get_All_Expance(login));
-            
+            return Converters.Converter.Expence_to_BLL_List(_dal.Get_All_Expance(login));            
         }
+        public List<Profit_ExpanceBLL> Get_All_Plans(string login)
+        {
+            return Converters.Converter.Plans_to_BLL_List(_dal.Get_All_Plan(login));
+        }
+
 
         public void Save_New_Profit(Profit_ExpanceBLL new_profit, string Type, string login)
         {
             _dal.Save_New_Profit(new_profit.Date_, new_profit.Sum, new_profit.Description, Type, login);
         }
+        public void Save_New_Expence(Profit_ExpanceBLL new_expance, string Type, string login)
+        {
+            _dal.Save_New_Expance(new_expance.Date_, new_expance.Sum, new_expance.Description, Type, login);
+        }
+        public void Save_New_Plan(Profit_ExpanceBLL new_plan, string Type, string login)
+        {
+            _dal.Save_New_Plan(new_plan.Date_, new_plan.Sum, new_plan.Description, Type, login);
+        }
+
+
         public void Delete_Profit(Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {            
             _dal.Delete_Profit(Converter.BLL_to_Profit(profit_ExpanceBLL, login));
         }
-        public void Save_New_Expence(Profit_ExpanceBLL new_expance, string Type, string login)
+        public void Delete_Plan(Profit_ExpanceBLL plan_ExpanceBLL, string login)
         {
-           
-            _dal.Save_New_Expance(new_expance.Date_, new_expance.Sum, new_expance.Description, Type, login);
+            _dal.Delete_Plan(Converter.BLL_to_Plan(plan_ExpanceBLL), login);
         }
+       
        public void Delete_Expence (Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {
             _dal.Delete_Expence(Converter.BLL_to_Expence(profit_ExpanceBLL), login);
-        }
-       
+        }    
+        
 
         public List<string> GetProfitsTypes ()
         {
             return _dal.GetProfitsTypes();
         }
-
         public List<string> GetExpanceTypes()
         {
             return _dal.GetExpanceTypes();

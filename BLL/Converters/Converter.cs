@@ -48,7 +48,25 @@ namespace BLL.Converters
             foreach (DAL.Model_Classes.Expence item in expence)
                 expenceBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expence_Type.Name });
             return expenceBLL;
-
+        }
+        public static List<Profit_ExpanceBLL>Plans_to_BLL_List(List<Plan> plan)
+        {
+            List<Profit_ExpanceBLL> planBLL = new List<Profit_ExpanceBLL>();
+            foreach (DAL.Model_Classes.Plan item in plan)
+                planBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expance_Type.Name });
+            return planBLL;
+        }
+        public static Plan BLL_to_Plan(Profit_ExpanceBLL profit_ExpenceBLL)
+        {
+            Plan plan = new Plan
+            {
+                Date_ = profit_ExpenceBLL.Date_,
+                Sum = profit_ExpenceBLL.Sum,
+                Description = profit_ExpenceBLL.Description,
+                User = new User(),
+                Expance_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type }
+            };
+            return plan;
         }
     }
 }
