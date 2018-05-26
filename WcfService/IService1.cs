@@ -45,8 +45,13 @@ namespace WcfOrganizer
         void Delete_Expence(Profit_ExpanceWCF profit_ExpanceWCF, string login);
         [OperationContract]
         void Delete_Plan(Profit_ExpanceWCF profit_ExpanceWCF, string login);
-    }
-
-
-  
+        [OperationContract]
+        decimal Get_Total_Profits();
+        [OperationContract]
+        decimal Get_Total_Expences();
+        [OperationContract]
+        decimal Get_Total_Plans();
+        [OperationContract]
+        decimal Get_Balance();
+    }  
 }

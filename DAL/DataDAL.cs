@@ -129,6 +129,26 @@ namespace DAL
             _ctx.SaveChanges();
         }
 
+        //Get Total Sum and Balance
+        #region
+        public decimal Get_Total_Profits()
+        {
+            return _ctx.Profits.Sum(p => p.Sum);
+        }
+        public decimal Get_Total_Expences()
+        {
+            return  _ctx.Expences.Sum(p => p.Sum);
+        }
+        public decimal Get_Total_Plans()
+        {
+            return _ctx.Plans.Sum(p => p.Sum);
+        }
+        public decimal Get_Balance()
+        {
+            return (_ctx.Profits.Sum(p => p.Sum)) - ( _ctx.Expences.Sum(p => p.Sum));
+        }
+        #endregion
+
         //Types
         public List<string> GetExpanceTypes()
         {

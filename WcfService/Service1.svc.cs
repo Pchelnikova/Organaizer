@@ -76,7 +76,27 @@ namespace WcfOrganizer
             _bll.Delete_Plan(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
 
-        
+        //Get Total Summ and Balance
+        #region
+        public decimal Get_Total_Profits()
+        {
+            return _bll.Get_Total_Profits();
+        }
+        public decimal Get_Total_Expences()
+        {
+            return _bll.Get_Total_Expences();
+        }
+        public decimal Get_Total_Plans()
+        {
+            return _bll.Get_Total_Plans();
+        }
+        public decimal Get_Balance()
+        {
+            return _bll.Get_Balance();
+        }
+        #endregion
+
+
         //Types
         public List<string> GetProfitsTypes()
         {

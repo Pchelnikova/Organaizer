@@ -10,8 +10,10 @@ namespace BLL
 {
     public class DataBLL
     {
-        private readonly DataDAL _dal = new DataDAL();        
+        private readonly DataDAL _dal = new DataDAL();
 
+        //Diary CRUD
+        #region
         public List<Diary_BLL> Show_All_Notes (string login)
         {
             var diary_list = _dal.Show_All_Notes(login);
@@ -25,12 +27,14 @@ namespace BLL
         {
             _dal.Add_Note(note, login);
         }
-
         public void Delete_Note (string note)
         {
             _dal.Delete_Note(note);
         }
+        #endregion
+
         //Budget CRUD
+        #region
         public List<Profit_ExpanceBLL> Get_All_Profits(string login)
         {
             return Converters.Converter.Profit_to_BLL_List(_dal.Get_All_Profits(login));
@@ -71,8 +75,28 @@ namespace BLL
        public void Delete_Expence (Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {
             _dal.Delete_Expence(Converter.BLL_to_Expence(profit_ExpanceBLL), login);
-        }    
-        
+        }
+        #endregion
+
+        //Get Total Sum and Balance
+        #region
+        public decimal Get_Total_Profits()
+        {
+            return _dal.Get_Total_Profits();
+        }
+        public decimal Get_Total_Expences()
+        {
+            return _dal.Get_Total_Expences();
+        }
+        public decimal Get_Total_Plans()
+        {
+            return _dal.Get_Total_Plans();
+        }
+        public decimal Get_Balance()
+        {
+            return _dal.Get_Balance();
+        }
+        #endregion
 
         public List<string> GetProfitsTypes ()
         {
