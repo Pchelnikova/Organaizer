@@ -96,6 +96,15 @@ namespace WcfOrganizer
         }
         #endregion
 
+        //Authorization
+        public bool Authorization(string login, string parol)
+        {
+            return _bll.Authorization(login, parol);
+        }
+        public bool Create_New_User (string login, string password)
+        {
+            return _bll.Create_New_User(login, password);
+        }
 
         //Types
         public List<string> GetProfitsTypes()

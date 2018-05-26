@@ -53,5 +53,9 @@ namespace WcfOrganizer
         decimal Get_Total_Plans();
         [OperationContract]
         decimal Get_Balance();
+        [OperationContract]
+        bool Authorization(string login, string parol);
+        [OperationContract]
+        bool Create_New_User(string login, string password);
     }  
 }

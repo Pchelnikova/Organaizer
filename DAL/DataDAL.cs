@@ -149,6 +149,42 @@ namespace DAL
         }
         #endregion
 
+        //Authorization
+        public bool Authorization(string login, string parol)
+        {
+          if ( _ctx.Users.FirstOrDefault(u => u.Login == login && u.Password_ == parol) != null)
+            {
+                return true;
+            }
+          else
+            {
+                return false;
+            }            
+        }
+        public bool Create_New_User(string login, string password)
+        {
+            int count = _ctx.Users.Count();
+            if (_ctx.Users.FirstOrDefault(u => u.Login == login) == null)
+            {
+                User user = new User
+                {
+                    Login = login,
+                    Password_ = password,
+                    Rang_of_User = _ctx.Rangs_of_User.FirstOrDefault(r => r.Rang == "Junior")
+                };
+                _ctx.Users.Add(user);
+                _ctx.SaveChanges();
+            }
+            if (_ctx.Users.Count() > count)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         //Types
         public List<string> GetExpanceTypes()
         {

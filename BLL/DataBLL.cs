@@ -98,6 +98,16 @@ namespace BLL
         }
         #endregion
 
+        //Authorization
+        public bool Authorization(string login, string parol)
+        {
+            return _dal.Authorization(login, parol);
+        }
+        public bool Create_New_User(string login, string password)
+        {
+            return _dal.Create_New_User(login, password);
+        }
+
         public List<string> GetProfitsTypes ()
         {
             return _dal.GetProfitsTypes();
