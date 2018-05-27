@@ -102,8 +102,14 @@ namespace DAL
         //Plan CRUD
         public List<Plan> Get_All_Plan(string login)
         {
-            var plans = _ctx.Plans.Where(pr => pr.User.Id == (_ctx.Users.FirstOrDefault(u => u.Login == login)).Id).ToList();
-            return plans;
+            if ((_ctx.Users.FirstOrDefault(u => u.Login == login).Rang_of_User.Id) == _ctx.Rangs_of_User.FirstOrDefault(r => r.Rang == "Senior").Id)
+            {
+                return _ctx.Plans.ToList();
+            }
+            else
+            {
+                return _ctx.Plans.Where(pr => pr.User.Id == (_ctx.Users.FirstOrDefault(u => u.Login == login)).Id).ToList();
+            }
         }
         public void Save_New_Plan(DateTime date, Decimal sum, string description, string Type, string login)
         {
@@ -124,7 +130,7 @@ namespace DAL
                 {
                 plan.Expance_Type = _ctx.Expances_Types.FirstOrDefault(e => e.Name == "NONE!") ;
                 }
-            var plan_for_del = _ctx.Plans.FirstOrDefault(d => d.Date_ == plan.Date_ && d.Sum == plan.Sum && d.Description == plan.Description && d.User == _ctx.Users.FirstOrDefault(u => u.Login == login) && d.Expance_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == plan.Expance_Type.Name));
+            var plan_for_del = _ctx.Plans.FirstOrDefault(d => d.Date_ == plan.Date_ && d.Sum == plan.Sum && d.Description == plan.Description && ((d.User == _ctx.Users.FirstOrDefault(u => u.Login == login))||(d.User == _ctx.Users.FirstOrDefault(u => u.Rang_of_User.Id == _ctx.Rangs_of_User.FirstOrDefault(r => r.Rang == "Senior").Id)) && d.Expance_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == plan.Expance_Type.Name)));
             _ctx.Plans.Remove(plan_for_del);
             _ctx.SaveChanges();
         }

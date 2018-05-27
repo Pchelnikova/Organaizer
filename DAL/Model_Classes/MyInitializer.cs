@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace DAL.Model_Classes
 {
-    internal class MyInitializer<T> :DropCreateDatabaseAlways<Model>
+    internal class MyInitializer<T> :DropCreateDatabaseIfModelChanges<Model>
     {
         protected override void Seed(Model context)
         {
@@ -85,14 +85,14 @@ namespace DAL.Model_Classes
             {
                 Rang = "Senior"
             };
-            Rang_of_User Middle = new Rang_of_User()
-            {
-                Rang = "Middle"
-            };
+          
             Rang_of_User Junior = new Rang_of_User()
             {
                 Rang = "Junior"
             };
+            context.Rangs_of_User.Add(Junior);
+            context.Rangs_of_User.Add(Senior);
+            context.SaveChanges();
             User First = new User()
             {
                 Login = "1",// "Senior",
@@ -101,8 +101,9 @@ namespace DAL.Model_Classes
             };
             User Second = new User()
             {
-                Login = "1",
-                Password_ = "1"
+                Login = "2",
+                Password_ = "2",
+                Rang_of_User = Junior
             };
       
             context.Users.Add(First);
