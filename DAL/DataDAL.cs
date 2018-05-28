@@ -131,8 +131,11 @@ namespace DAL
                 plan.Expance_Type = _ctx.Expances_Types.FirstOrDefault(e => e.Name == "NONE!") ;
                 }
             var plan_for_del = _ctx.Plans.FirstOrDefault(d => d.Date_ == plan.Date_ && d.Sum == plan.Sum && d.Description == plan.Description && ((d.User == _ctx.Users.FirstOrDefault(u => u.Login == login))||(d.User == _ctx.Users.FirstOrDefault(u => u.Rang_of_User.Id == _ctx.Rangs_of_User.FirstOrDefault(r => r.Rang == "Senior").Id)) && d.Expance_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == plan.Expance_Type.Name)));
-            _ctx.Plans.Remove(plan_for_del);
-            _ctx.SaveChanges();
+            if (plan_for_del != null)
+            {
+                _ctx.Plans.Remove(plan_for_del);
+                _ctx.SaveChanges();
+            }
         }
 
         //Get Total Sum and Balance
