@@ -15,7 +15,11 @@ namespace WcfOrganizer
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        private readonly DataBLL _bll = new DataBLL();
+        private  DataBLL _bll;
+        public Service1 (DataBLL bll)
+        {
+            _bll = bll;
+        }
 
         public List<Diary_WCF> Get_All_Notes(string login)
         {

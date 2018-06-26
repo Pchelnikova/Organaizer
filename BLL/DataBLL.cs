@@ -8,7 +8,7 @@ using BLL.Converters;
 
 namespace BLL
 {
-    public class DataBLL :InterfaceBLL
+    public class DataBLL : InterfaceBLL
     {
         private readonly DataDAL _dal;
 
