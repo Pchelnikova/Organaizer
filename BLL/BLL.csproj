@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\InterfaceBLL.cs" />
+    <Compile Include="Abstract\IServiceBLL.cs" />
     <Compile Include="Converters\Converter.cs" />
     <Compile Include="DataBLL.cs" />
     <Compile Include="BLL_DTO\Diary_BLL.cs" />
