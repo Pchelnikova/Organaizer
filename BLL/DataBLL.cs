@@ -8,9 +8,14 @@ using BLL.Converters;
 
 namespace BLL
 {
-    public class DataBLL
+    public class DataBLL :InterfaceBLL
     {
-        private readonly DataDAL _dal = new DataDAL();
+        private readonly DataDAL _dal;
+
+        public DataBLL (DataDAL dal)
+        {
+            _dal = dal;
+        }
 
         //Diary CRUD
         #region
