@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
-using BLL.Converters;
+using BLL;
 
 namespace BLL
 {
@@ -23,7 +23,7 @@ namespace BLL
         {
             var diary_list = _dal.Show_All_Notes(login);
             List<Diary_BLL> diaries = new List<Diary_BLL>();
-            foreach (DAL.Model_Classes.Diary item in diary_list)
+            foreach (Diary item in diary_list)
                 diaries.Add(new Diary_BLL() { Date_ = item.Date, Text = item.Text });
            
             return diaries;
@@ -42,15 +42,15 @@ namespace BLL
         #region
         public List<Profit_ExpanceBLL> Get_All_Profits(string login)
         {
-            return Converters.Converter.Profit_to_BLL_List(_dal.Get_All_Profits(login));
+            return Converter.Profit_to_BLL_List(_dal.Get_All_Profits(login));
         }
         public List<Profit_ExpanceBLL> Get_All_Expance(string login)
         {
-            return Converters.Converter.Expence_to_BLL_List(_dal.Get_All_Expance(login));            
+            return Converter.Expence_to_BLL_List(_dal.Get_All_Expance(login));            
         }
         public List<Profit_ExpanceBLL> Get_All_Plans(string login)
         {
-            return Converters.Converter.Plans_to_BLL_List(_dal.Get_All_Plan(login));
+            return Converter.Plans_to_BLL_List(_dal.Get_All_Plan(login));
         }
 
 

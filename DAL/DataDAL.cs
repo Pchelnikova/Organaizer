@@ -1,16 +1,18 @@
-﻿using DAL.Model_Classes;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace DAL
 {
-    public class DataDAL
+    public class DataDAL : InterfaceDAL
     {
-        private readonly Model _ctx = new Model();
+        private readonly Model _ctx;
+        public DataDAL(Model ctx)
+        {
+            _ctx = ctx;
+        }
         //methods 
         public List<Diary> Show_All_Notes (string login)
         {
@@ -24,7 +26,7 @@ namespace DAL
             var user = _ctx.Users.FirstOrDefault(u => u.Login == login);
 
 
-            DAL.Model_Classes.Diary new_note = new DAL.Model_Classes.Diary()
+            DAL.Diary new_note = new DAL.Diary()
             {
                 Date = System.DateTime.Now,
                 Text = note,

@@ -1,13 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.Infrastructure.Annotations;
-
 namespace DAL
 {
-    using DAL.Model_Classes;
-    using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
-    using System.Linq;
 
     public class Model : DbContext
     {

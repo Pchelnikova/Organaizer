@@ -1,11 +1,11 @@
-﻿using DAL.Model_Classes;
+﻿using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Converters
+namespace BLL
 {
     public static class Converter
     {
@@ -37,7 +37,7 @@ namespace BLL.Converters
         public static List <Profit_ExpanceBLL> Profit_to_BLL_List (List<Profit> profits)
         {
             List<Profit_ExpanceBLL> profitsBLL = new List<Profit_ExpanceBLL>();
-            foreach (DAL.Model_Classes.Profit item in profits)
+            foreach (Profit item in profits)
                 profitsBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Profit_Type.Name });
             return profitsBLL;
 
@@ -45,14 +45,14 @@ namespace BLL.Converters
         public static List<Profit_ExpanceBLL> Expence_to_BLL_List(List<Expence> expence)
         {
             List<Profit_ExpanceBLL> expenceBLL = new List<Profit_ExpanceBLL>();
-            foreach (DAL.Model_Classes.Expence item in expence)
+            foreach (Expence item in expence)
                 expenceBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expence_Type.Name });
             return expenceBLL;
         }
         public static List<Profit_ExpanceBLL>Plans_to_BLL_List(List<Plan> plan)
         {
             List<Profit_ExpanceBLL> planBLL = new List<Profit_ExpanceBLL>();
-            foreach (DAL.Model_Classes.Plan item in plan)
+            foreach (Plan item in plan)
                 planBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expance_Type.Name });
             return planBLL;
         }
