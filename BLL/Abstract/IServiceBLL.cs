@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    interface InterfaceBLL
+    public interface InterfaceBLL
     {
        List<Diary_BLL> Show_All_Notes(string login);
         void Add_Note(string note, string login);

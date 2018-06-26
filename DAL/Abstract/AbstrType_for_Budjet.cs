@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace DAL.Model_Classes
+namespace DAL
 {
     public abstract class AbstrType_for_Budjet
     {
