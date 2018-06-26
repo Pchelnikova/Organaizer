@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Model_Classes
 {
-    public class Expence_Type : AbstrType_for_Budjet
-    {        
+    public class Profit : Budjet_Unit
+    {
         //EF navigation properties
-        public virtual ICollection<Plan> Plan { get; set; }
+        public virtual Profit_Type Profit_Type { get; set; } 
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Model_Classes
 {
     //finance plan for future month
     public class Plan : Budjet_Unit

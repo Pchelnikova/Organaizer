@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace DAL
+namespace DAL.Model_Classes
 {
     internal class MyInitializer<T> :DropCreateDatabaseIfModelChanges<Model>
     {

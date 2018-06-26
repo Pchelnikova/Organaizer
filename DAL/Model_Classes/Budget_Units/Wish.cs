@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Model_Classes
 {
     //for dreams, goals, wishes of all family members
     public class Wish : Budjet_Unit

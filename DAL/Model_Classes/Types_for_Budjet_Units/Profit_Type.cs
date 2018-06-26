@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace DAL.Model_Classes
 {
-    interface InterfaceDAL
-    {
+    public class Profit_Type : AbstrType_for_Budjet
+    {       
 
     }
 }
