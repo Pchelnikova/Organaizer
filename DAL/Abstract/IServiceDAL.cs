@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DAL
 {
-    public interface InterfaceDAL
+    public interface IServiceDAL
     {
         List<Diary> Show_All_Notes(string login);
         void Add_Note(string note, string login);

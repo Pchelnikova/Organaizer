@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace DAL
 {
-    public class DataDAL : InterfaceDAL
+    public class DataDAL : IServiceDAL
     {
         private readonly Model _ctx;
         public DataDAL(Model ctx)

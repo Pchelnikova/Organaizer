@@ -8,7 +8,7 @@ using BLL;
 
 namespace BLL
 {
-    public class DataBLL :InterfaceBLL
+    public class DataBLL : IServiceBLL
     {
         private readonly DataDAL _dal;
 
@@ -42,15 +42,15 @@ namespace BLL
         #region
         public List<Profit_ExpanceBLL> Get_All_Profits(string login)
         {
-            return Converter.Profit_to_BLL_List(_dal.Get_All_Profits(login));
+            return ConverterBLL.Profit_to_BLL_List(_dal.Get_All_Profits(login));
         }
         public List<Profit_ExpanceBLL> Get_All_Expance(string login)
         {
-            return Converter.Expence_to_BLL_List(_dal.Get_All_Expance(login));            
+            return ConverterBLL.Expence_to_BLL_List(_dal.Get_All_Expance(login));            
         }
         public List<Profit_ExpanceBLL> Get_All_Plans(string login)
         {
-            return Converter.Plans_to_BLL_List(_dal.Get_All_Plan(login));
+            return ConverterBLL.Plans_to_BLL_List(_dal.Get_All_Plan(login));
         }
 
 
@@ -70,16 +70,16 @@ namespace BLL
 
         public void Delete_Profit(Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {            
-            _dal.Delete_Profit(Converter.BLL_to_Profit(profit_ExpanceBLL, login));
+            _dal.Delete_Profit(ConverterBLL.BLL_to_Profit(profit_ExpanceBLL, login));
         }
         public void Delete_Plan(Profit_ExpanceBLL plan_ExpanceBLL, string login)
         {
-            _dal.Delete_Plan(Converter.BLL_to_Plan(plan_ExpanceBLL), login);
+            _dal.Delete_Plan(ConverterBLL.BLL_to_Plan(plan_ExpanceBLL), login);
         }
        
        public void Delete_Expence (Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {
-            _dal.Delete_Expence(Converter.BLL_to_Expence(profit_ExpanceBLL), login);
+            _dal.Delete_Expence(ConverterBLL.BLL_to_Expence(profit_ExpanceBLL), login);
         }
         #endregion
 

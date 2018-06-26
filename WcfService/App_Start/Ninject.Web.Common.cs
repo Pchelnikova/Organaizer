@@ -11,6 +11,9 @@ namespace WcfService.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
+    using BLL;
+    using DAL;
+    using System.Data.Entity;
 
     public static class NinjectWebCommon 
     {
@@ -61,7 +64,9 @@ namespace WcfService.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-           
+            kernel.Bind<IServiceBLL>().To<DataBLL>();
+            kernel.Bind<IServiceDAL>().To<DataDAL>();
+            kernel.Bind<DbContext>().To<Model>();
         }        
     }
 }

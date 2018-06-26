@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public static class Converter
+    public static class ConverterBLL
     {
         public static Profit BLL_to_Profit(Profit_ExpanceBLL profit_ExpenceBLL, string login)
         {

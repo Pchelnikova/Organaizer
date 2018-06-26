@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\InterfaceDAL.cs" />
+    <Compile Include="Abstract\IServiceDAL.cs" />
     <Compile Include="DataDAL.cs" />
     <Compile Include="Abstract\Budjet_Unit.cs" />
     <Compile Include="Concrete\Model.cs" />
