@@ -1,4 +1,4 @@
-﻿using DAL.Model_Classes;
+﻿using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,7 @@ namespace DAL
             var user = _ctx.Users.FirstOrDefault(u => u.Login == login);
 
 
-            DAL.Model_Classes.Diary new_note = new DAL.Model_Classes.Diary()
+            Diary new_note = new Diary()
             {
                 Date = System.DateTime.Now,
                 Text = note,

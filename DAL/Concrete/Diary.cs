@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Model_Classes
+namespace DAL
 {
     //for simply notes
     public class Diary 
