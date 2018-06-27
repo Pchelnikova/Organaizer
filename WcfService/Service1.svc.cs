@@ -120,12 +120,6 @@ namespace WcfOrganizer
         public List<string> GetExpanceTypes()
         {
             return _bll.GetExpanceTypes();
-        }
-
-        //new methods
-        public void DeleteUser(string login)
-        {
-            _bll.DeleteUser(login);
-        }
+        }        
     }
 }
