@@ -207,7 +207,12 @@ namespace DAL
 
             return _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
         }
-       
+        public void DeleteUser(string login)
+        {
+            var user = _ctx.Users.Where(x => x.Login == login).SingleOrDefault();
+            _ctx.Users.Remove(user);
+            _ctx.SaveChanges();
+        }
        
 
 

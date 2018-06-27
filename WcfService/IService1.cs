@@ -20,7 +20,7 @@ namespace WcfOrganizer
         void Add_Note(string note, string login);
         [OperationContract]
         void Delete_Note(string note);
-       
+
 
         //Budget
         [OperationContract]
@@ -57,5 +57,7 @@ namespace WcfOrganizer
         bool Authorization(string login, string parol);
         [OperationContract]
         bool Create_New_User(string login, string password);
+        [OperationContract]
+        void DeleteUser(string login);
     }  
 }

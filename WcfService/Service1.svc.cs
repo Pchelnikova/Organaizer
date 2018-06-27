@@ -121,5 +121,9 @@ namespace WcfOrganizer
         {
             return _bll.GetExpanceTypes();
         }        
+        public void DeleteUser(string login)
+        {
+            _bll.DeleteUser(login);
+        }
     }
 }
