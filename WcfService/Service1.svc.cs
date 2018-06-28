@@ -120,6 +120,10 @@ namespace WcfOrganizer
         public List<string> GetExpanceTypes()
         {
             return _bll.GetExpanceTypes();
-        }        
+        }
+        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
+        {
+            _bll.ChangesUserInfo(login, newLogin, newPassword,status);
+        }
     }
 }
