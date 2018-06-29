@@ -58,9 +58,13 @@ namespace WcfOrganizer
         [OperationContract]
         bool Create_New_User(string login, string password);
         [OperationContract]
-        void ChangesUserInfo(string login, string newLogin, string newPassword, string status);
-        [OperationContract]
         void DeleteUser(string login);
+        [OperationContract]
+        void ChangeUser_Login(string login, string newLogin);
+        [OperationContract]
+        void ChangeUser_Password(string login, string newPassword);
+        [OperationContract]
+        void ChangeUser_Status(string login, string newStatus);
 
     }  
 

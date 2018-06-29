@@ -126,11 +126,17 @@ namespace BLL
         {
             _dal.DeleteUser(login);
         }
-        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
+        public void ChangeUser_Login(string login, string newLogin)
         {
-            _dal.ChangesUserInfo(login,newLogin,newPassword,status);
+            _dal.ChangeUser_Login(login, newLogin);
         }
-
+        public void ChangeUser_Password(string login, string newPassword)
+        {
+            _dal.ChangeUser_Password(login, newPassword);
+        }
+        public void ChangeUser_Status(string login, string newStatus)
+        {
+            _dal.ChangeUser_Status(login, newStatus);
+        }
     }
-      
 }

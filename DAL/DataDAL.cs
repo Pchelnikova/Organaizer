@@ -193,7 +193,6 @@ namespace DAL
             {
                 return false;
             }
-
         }
 
         //Types
@@ -204,7 +203,6 @@ namespace DAL
         }
         public List<string> GetProfitsTypes()
         {
-
             return _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
         }
         public void DeleteUser(string login)
@@ -213,18 +211,24 @@ namespace DAL
             _ctx.Users.Remove(user);
             _ctx.SaveChanges();
         }
-        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
+        public void ChangeUser_Login(string login, string newLogin)
         {
-
             var user = _ctx.Users.Where(x => x.Login == login).SingleOrDefault();
-            var rang = _ctx.Rangs_of_User.Where(x => x.Rang == status).SingleOrDefault();
             user.Login = newLogin;
+            _ctx.SaveChanges();
+        }
+        public void ChangeUser_Password(string login, string newPassword)
+        {
+            var user = _ctx.Users.Where(x => x.Login == login).SingleOrDefault();
             user.Password_ = newPassword;
+            _ctx.SaveChanges();
+        }
+        public void ChangeUser_Status(string login, string newStatus)
+        {
+            var user = _ctx.Users.Where(x => x.Login == login).SingleOrDefault();
+            var rang = _ctx.Rangs_of_User.Where(x => x.Rang == newStatus).SingleOrDefault();
             user.Rang_of_User = rang;
             _ctx.SaveChanges();
         }
-
-
     }
-
 }

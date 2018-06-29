@@ -25,9 +25,10 @@ namespace DAL
         bool Create_New_User(string login, string password);        
         List<string> GetExpanceTypes();
         List<string> GetProfitsTypes();
-        void ChangesUserInfo(string login, string newLogin, string newPassword, string status);
         void DeleteUser(string login);
-
+        void ChangeUser_Login(string login, string newLogin);
+        void ChangeUser_Password(string login, string newPassword);
+        void ChangeUser_Status(string login, string newStatus);
 
     }
 }
