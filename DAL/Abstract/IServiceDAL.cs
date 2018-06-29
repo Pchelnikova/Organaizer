@@ -5,7 +5,7 @@ namespace DAL
 {
     public interface IServiceDAL
     {
-        List<Diary> Show_All_Notes(string login);
+        List<Diary> Get_All_Notes(string login);
         void Add_Note(string note, string login);
         void Delete_Note(string note);
         List<Profit> Get_All_Profits(string login);

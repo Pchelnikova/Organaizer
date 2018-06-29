@@ -14,7 +14,7 @@ namespace DAL
             _ctx = ctx;
         }
         //methods 
-        public List<Diary> Show_All_Notes (string login)
+        public List<Diary> Get_All_Notes (string login)
         {
             var diaries = _ctx.Diaries.Where(note => note.User.Login == login).ToList();           
             return diaries;

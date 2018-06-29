@@ -21,7 +21,7 @@ namespace BLL
         #region
         public List<Diary_BLL> Show_All_Notes (string login)
         {
-            var diary_list = _dal.Show_All_Notes(login);
+            var diary_list = _dal.Get_All_Notes(login);
             List<Diary_BLL> diaries = new List<Diary_BLL>();
             foreach (Diary item in diary_list)
                 diaries.Add(new Diary_BLL() { Date_ = item.Date, Text = item.Text });
