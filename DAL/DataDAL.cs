@@ -22,11 +22,11 @@ namespace DAL
 
         public void Add_Note(string note, string login)
         {
-            var diaries = _ctx.Diaries;//.Where(d => d.User.Login == login).ToList();
+            var diaries = _ctx.Diaries;
             var user = _ctx.Users.FirstOrDefault(u => u.Login == login);
 
 
-            DAL.Diary new_note = new DAL.Diary()
+            Diary new_note = new Diary()
             {
                 Date = System.DateTime.Now,
                 Text = note,

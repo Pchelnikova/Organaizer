@@ -22,8 +22,7 @@ namespace DAL
         decimal Get_Total_Plans();
         decimal Get_Balance();
         bool Authorization(string login, string parol);
-        bool Create_New_User(string login, string password);
-        
+        bool Create_New_User(string login, string password);        
         List<string> GetExpanceTypes();
         List<string> GetProfitsTypes();
     }
