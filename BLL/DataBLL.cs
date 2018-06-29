@@ -122,9 +122,13 @@ namespace BLL
         {
             return _dal.GetExpanceTypes();
         }
-        public void DeleteUser(string login)
+ feature/User_Info_Changes
+        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
         {
-           _dal.DeleteUser(login);
+            _dal.ChangesUserInfo(login,newLogin,newPassword,status);
         }
+    }
+      
 }
+
 }
