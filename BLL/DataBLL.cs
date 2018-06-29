@@ -21,7 +21,7 @@ namespace BLL
         #region
         public List<Diary_BLL> Show_All_Notes (string login)
         {
-            var diary_list = _dal.Show_All_Notes(login);
+            var diary_list = _dal.Get_All_Notes(login);
             List<Diary_BLL> diaries = new List<Diary_BLL>();
             foreach (Diary item in diary_list)
                 diaries.Add(new Diary_BLL() { Date_ = item.Date, Text = item.Text });
@@ -112,8 +112,9 @@ namespace BLL
         {
             return _dal.Create_New_User(login, password);
         }
+     
 
-        public List<string> GetProfitsTypes ()
+    public List<string> GetProfitsTypes ()
         {
             return _dal.GetProfitsTypes();
         }
@@ -121,9 +122,13 @@ namespace BLL
         {
             return _dal.GetExpanceTypes();
         }
+ feature/User_Info_Changes
         public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
         {
             _dal.ChangesUserInfo(login,newLogin,newPassword,status);
         }
     }
+      
+}
+
 }

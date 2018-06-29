@@ -14,7 +14,7 @@ namespace DAL
             _ctx = ctx;
         }
         //methods 
-        public List<Diary> Show_All_Notes (string login)
+        public List<Diary> Get_All_Notes (string login)
         {
             var diaries = _ctx.Diaries.Where(note => note.User.Login == login).ToList();           
             return diaries;
@@ -22,11 +22,11 @@ namespace DAL
 
         public void Add_Note(string note, string login)
         {
-            var diaries = _ctx.Diaries;//.Where(d => d.User.Login == login).ToList();
+            var diaries = _ctx.Diaries;
             var user = _ctx.Users.FirstOrDefault(u => u.Login == login);
 
 
-            DAL.Diary new_note = new DAL.Diary()
+            Diary new_note = new Diary()
             {
                 Date = System.DateTime.Now,
                 Text = note,
@@ -196,8 +196,9 @@ namespace DAL
             }
 
         }
-        //Types
-        public List<string> GetExpanceTypes()
+       
+    //Types
+    public List<string> GetExpanceTypes()
         {
             var expance_types = _ctx.Expances_Types.Select(pr => pr.Name.ToString()).ToList();
             return expance_types;
@@ -207,6 +208,7 @@ namespace DAL
 
             return _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
         }
+
         public void ChangesUserInfo(string login,string newLogin, string newPassword, string status)
         {
 
@@ -219,7 +221,6 @@ namespace DAL
         }
 
 
-
-    }
+}
 
 }

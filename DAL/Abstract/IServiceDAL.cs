@@ -5,7 +5,7 @@ namespace DAL
 {
     public interface IServiceDAL
     {
-        List<Diary> Show_All_Notes(string login);
+        List<Diary> Get_All_Notes(string login);
         void Add_Note(string note, string login);
         void Delete_Note(string note);
         List<Profit> Get_All_Profits(string login);
@@ -22,9 +22,11 @@ namespace DAL
         decimal Get_Total_Plans();
         decimal Get_Balance();
         bool Authorization(string login, string parol);
-        bool Create_New_User(string login, string password);
+        bool Create_New_User(string login, string password);        
         List<string> GetExpanceTypes();
         List<string> GetProfitsTypes();
         void ChangesUserInfo(string login, string newLogin, string newPassword, string status);
+
+        
     }
 }

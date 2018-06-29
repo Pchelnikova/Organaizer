@@ -29,5 +29,7 @@ namespace BLL
         List<string> GetProfitsTypes();
         List<string> GetExpanceTypes();
         void ChangesUserInfo(string login, string newLogin, string newPassword, string status);
+
+       
     }
 }

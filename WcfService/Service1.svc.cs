@@ -111,19 +111,23 @@ namespace WcfOrganizer
         {
             return _bll.Create_New_User(login, password);
         }
+        
 
-        //Types
-        public List<string> GetProfitsTypes()
+    //Types
+    public List<string> GetProfitsTypes()
         {
             return _bll.GetProfitsTypes();
         }
         public List<string> GetExpanceTypes()
         {
             return _bll.GetExpanceTypes();
+
         }
         public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
         {
             _bll.ChangesUserInfo(login, newLogin, newPassword,status);
-        }
+
+        }      
+      
     }
 }
