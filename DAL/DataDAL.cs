@@ -196,8 +196,9 @@ namespace DAL
             }
 
         }
-        //Types
-        public List<string> GetExpanceTypes()
+       
+    //Types
+    public List<string> GetExpanceTypes()
         {
             var expance_types = _ctx.Expances_Types.Select(pr => pr.Name.ToString()).ToList();
             return expance_types;

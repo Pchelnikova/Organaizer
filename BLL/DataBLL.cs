@@ -112,8 +112,9 @@ namespace BLL
         {
             return _dal.Create_New_User(login, password);
         }
+     
 
-        public List<string> GetProfitsTypes ()
+    public List<string> GetProfitsTypes ()
         {
             return _dal.GetProfitsTypes();
         }

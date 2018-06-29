@@ -111,9 +111,10 @@ namespace WcfOrganizer
         {
             return _bll.Create_New_User(login, password);
         }
+        
 
-        //Types
-        public List<string> GetProfitsTypes()
+    //Types
+    public List<string> GetProfitsTypes()
         {
             return _bll.GetProfitsTypes();
         }
