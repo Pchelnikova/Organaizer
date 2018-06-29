@@ -57,6 +57,10 @@ namespace WcfOrganizer
         bool Authorization(string login, string parol);
         [OperationContract]
         bool Create_New_User(string login, string password);
-       
+        [OperationContract]
+
+        void ChangesUserInfo(string login, string newLogin, string newPassword, string status);
+
     }  
+
 }

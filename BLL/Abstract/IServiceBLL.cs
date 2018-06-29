@@ -28,5 +28,8 @@ namespace BLL
         bool Create_New_User(string login, string password);
         List<string> GetProfitsTypes();
         List<string> GetExpanceTypes();
+        void ChangesUserInfo(string login, string newLogin, string newPassword, string status);
+
+       
     }
 }
