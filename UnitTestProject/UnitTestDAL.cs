@@ -28,10 +28,25 @@ namespace UnitTestProject
         {
             var moqGenerator = new Mock<IServiceDAL>();
             moqGenerator.Setup(m =>
-                m.Get_All_Notes(It.IsIn<string>("1"))).Returns(new List<Diary>() { new Diary(), new Diary() }) ;
-            var all_notes = _dal.Get_All_Notes("1").Count;
-            _dal.Add_Note(moqGenerator.Object.Get_All_Notes("1").ToString(),  moqGenerator.Object.Get_All_Notes("1").ToString());
-            var all_notes_added = _dal.Get_All_Notes("1").Count;
+                m.Get_All_Notes("1")).Returns(new List<Diary>() { new Diary()
+                    {
+                        Date = DateTime.Now,
+                        Id = 0,
+                        Text = "drrrr",
+                        User = new User(){Login = "1", Password_ = "1" }
+                    },
+                    new Diary()
+                 {
+                        Date = DateTime.Now,
+                        Id = 1,
+                        Text = "trrrr",
+                        User = new User(){Login = "1", Password_ = "1" }
+                 }
+                }) ;
+            var all_notes = moqGenerator.Object.Get_All_Notes("1").Count;
+             moqGenerator.Object.Add_Note(moqGenerator.Object.Get_All_Notes("1")[0].Text,
+                 moqGenerator.Object.Get_All_Notes("1")[0].User.Login);
+            var all_notes_added = moqGenerator.Object.Get_All_Notes("1").Count;
             Assert.AreEqual(1, all_notes_added - all_notes);                             
         }
     }

@@ -25,10 +25,9 @@ namespace DAL
             var diaries = _ctx.Diaries;
             var user = _ctx.Users.FirstOrDefault(u => u.Login == login);
 
-
             Diary new_note = new Diary()
             {
-                Date = System.DateTime.Now,
+                Date = DateTime.Now,
                 Text = note,
                 User = user
             };
