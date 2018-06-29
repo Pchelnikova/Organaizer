@@ -19,7 +19,6 @@ namespace DAL
             var diaries = _ctx.Diaries.Where(note => note.User.Login == login).ToList();           
             return diaries;
         }
-
         public void Add_Note(string note, string login)
         {
             var diaries = _ctx.Diaries;
@@ -78,8 +77,7 @@ namespace DAL
         {
             var expance = _ctx.Expences.Where(pr => pr.User.Login == login).ToList();
             return expance;
-        }
-        
+        }       
         public void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login)
         {
             Expence expence = new Expence()
@@ -197,7 +195,7 @@ namespace DAL
         }
        
     //Types
-    public List<string> GetExpanceTypes()
+        public List<string> GetExpanceTypes()
         {
             var expance_types = _ctx.Expances_Types.Select(pr => pr.Name.ToString()).ToList();
             return expance_types;

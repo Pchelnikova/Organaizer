@@ -33,7 +33,6 @@ namespace WcfOrganizer
             }
             return diaries;
         }
-
         public void Add_Note(string note, string login)
         {
             _bll.Add_Note(note, login);
@@ -111,10 +110,14 @@ namespace WcfOrganizer
         {
             return _bll.Create_New_User(login, password);
         }
-        
+        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
+        {
+            _bll.ChangesUserInfo(login, newLogin, newPassword, status);
 
-    //Types
-    public List<string> GetProfitsTypes()
+        }
+
+        //Types
+        public List<string> GetProfitsTypes()
         {
             return _bll.GetProfitsTypes();
         }
@@ -123,11 +126,7 @@ namespace WcfOrganizer
             return _bll.GetExpanceTypes();
 
         }
-        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
-        {
-            _bll.ChangesUserInfo(login, newLogin, newPassword,status);
-
-        }      
+       
       
     }
 }
