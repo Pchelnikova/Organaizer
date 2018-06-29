@@ -18,7 +18,7 @@ namespace WcfOrganizer
     {
         private readonly DataBLL _bll;
 
-         public Service1 (DataBLL bll)
+        public Service1(DataBLL bll)
         {
             _bll = bll;
         }
@@ -33,6 +33,7 @@ namespace WcfOrganizer
             }
             return diaries;
         }
+
         public void Add_Note(string note, string login)
         {
             _bll.Add_Note(note, login);
@@ -55,12 +56,12 @@ namespace WcfOrganizer
             _bll.Delete_Profit(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
         public void Save_New_Expance(Profit_ExpanceWCF new_expance, string Type, string login)
-        {            
+        {
             _bll.Save_New_Expence(Converter.WCF_to_BLL(new_expance), Type, login);
         }
         public List<Profit_ExpanceWCF> Get_All_Expance(string login)
-        {          
-           return Converter.BLL_to_WCF_List(_bll.Get_All_Expance(login));                       
+        {
+            return Converter.BLL_to_WCF_List(_bll.Get_All_Expance(login));
         }
         public void Delete_Expence(Profit_ExpanceWCF profit_ExpanceWCF, string login)
         {
@@ -106,15 +107,11 @@ namespace WcfOrganizer
         {
             return _bll.Authorization(login, parol);
         }
-        public bool Create_New_User (string login, string password)
+        public bool Create_New_User(string login, string password)
         {
             return _bll.Create_New_User(login, password);
         }
-        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
-        {
-            _bll.ChangesUserInfo(login, newLogin, newPassword, status);
 
-        }
 
         //Types
         public List<string> GetProfitsTypes()
@@ -126,7 +123,14 @@ namespace WcfOrganizer
             return _bll.GetExpanceTypes();
 
         }
-       
-      
+        public void DeleteUser(string login)
+        {
+            _bll.DeleteUser(login);
+        }
+        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
+        {
+            _bll.ChangesUserInfo(login, newLogin, newPassword, status);
+        }
+
     }
 }

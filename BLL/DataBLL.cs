@@ -114,7 +114,7 @@ namespace BLL
         }
      
 
-        public List<string> GetProfitsTypes ()
+    public List<string> GetProfitsTypes ()
         {
             return _dal.GetProfitsTypes();
         }
@@ -122,12 +122,15 @@ namespace BLL
         {
             return _dal.GetExpanceTypes();
         }
+        public void DeleteUser(string login)
+        {
+            _dal.DeleteUser(login);
+        }
         public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
         {
             _dal.ChangesUserInfo(login,newLogin,newPassword,status);
         }
+
     }
       
-}
-
 }

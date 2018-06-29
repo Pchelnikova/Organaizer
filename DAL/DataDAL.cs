@@ -14,11 +14,12 @@ namespace DAL
             _ctx = ctx;
         }
         //methods 
-        public List<Diary> Get_All_Notes (string login)
+        public List<Diary> Get_All_Notes(string login)
         {
-            var diaries = _ctx.Diaries.Where(note => note.User.Login == login).ToList();           
+            var diaries = _ctx.Diaries.Where(note => note.User.Login == login).ToList();
             return diaries;
         }
+
         public void Add_Note(string note, string login)
         {
             var diaries = _ctx.Diaries;
@@ -30,10 +31,10 @@ namespace DAL
                 Text = note,
                 User = user
             };
-                _ctx.Diaries.Add(new_note);
-                _ctx.SaveChanges();            
+            _ctx.Diaries.Add(new_note);
+            _ctx.SaveChanges();
         }
-        public void Delete_Note (string note)
+        public void Delete_Note(string note)
         {
             var diary_note = _ctx.Diaries.FirstOrDefault(d => d.Text == note);
             _ctx.Diaries.Remove(diary_note);
@@ -43,7 +44,7 @@ namespace DAL
 
         //Budget CRUD
 
-        public List<Profit> Get_All_Profits (string login)
+        public List<Profit> Get_All_Profits(string login)
         {
             var profits = _ctx.Profits.Where(pr => pr.User.Id == (_ctx.Users.FirstOrDefault(u => u.Login == login)).Id).ToList();
             return profits;
@@ -57,7 +58,7 @@ namespace DAL
                 Description = description,
                 User = _ctx.Users.FirstOrDefault(u => u.Login == login),
                 Profit_Type = _ctx.Profit_Types.FirstOrDefault(p => p.Name == Type)
-                
+
             };
             _ctx.Profits.Add(profit);
             _ctx.SaveChanges();
@@ -77,7 +78,8 @@ namespace DAL
         {
             var expance = _ctx.Expences.Where(pr => pr.User.Login == login).ToList();
             return expance;
-        }       
+        }
+
         public void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login)
         {
             Expence expence = new Expence()
@@ -126,10 +128,10 @@ namespace DAL
         public void Delete_Plan(Plan plan, string login)
         {
             if (plan.Expance_Type == null)
-                {
-                plan.Expance_Type = _ctx.Expances_Types.FirstOrDefault(e => e.Name == "NONE!") ;
-                }
-            var plan_for_del = _ctx.Plans.FirstOrDefault(d => d.Date_ == plan.Date_ && d.Sum == plan.Sum && d.Description == plan.Description && ((d.User == _ctx.Users.FirstOrDefault(u => u.Login == login))||(d.User == _ctx.Users.FirstOrDefault(u => u.Rang_of_User.Id == _ctx.Rangs_of_User.FirstOrDefault(r => r.Rang == "Senior").Id)) && d.Expance_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == plan.Expance_Type.Name)));
+            {
+                plan.Expance_Type = _ctx.Expances_Types.FirstOrDefault(e => e.Name == "NONE!");
+            }
+            var plan_for_del = _ctx.Plans.FirstOrDefault(d => d.Date_ == plan.Date_ && d.Sum == plan.Sum && d.Description == plan.Description && ((d.User == _ctx.Users.FirstOrDefault(u => u.Login == login)) || (d.User == _ctx.Users.FirstOrDefault(u => u.Rang_of_User.Id == _ctx.Rangs_of_User.FirstOrDefault(r => r.Rang == "Senior").Id)) && d.Expance_Type == _ctx.Expances_Types.FirstOrDefault(e => e.Name == plan.Expance_Type.Name)));
             if (plan_for_del != null)
             {
                 _ctx.Plans.Remove(plan_for_del);
@@ -145,7 +147,7 @@ namespace DAL
         }
         public decimal Get_Total_Expences()
         {
-            return  _ctx.Expences.Sum(p => p.Sum);
+            return _ctx.Expences.Sum(p => p.Sum);
         }
         public decimal Get_Total_Plans()
         {
@@ -153,21 +155,21 @@ namespace DAL
         }
         public decimal Get_Balance()
         {
-            return (_ctx.Profits.Sum(p => p.Sum)) - ( _ctx.Expences.Sum(p => p.Sum));
+            return (_ctx.Profits.Sum(p => p.Sum)) - (_ctx.Expences.Sum(p => p.Sum));
         }
         #endregion
 
         //Authorization
         public bool Authorization(string login, string parol)
         {
-          if ( _ctx.Users.FirstOrDefault(u => u.Login == login && u.Password_ == parol) != null)
+            if (_ctx.Users.FirstOrDefault(u => u.Login == login && u.Password_ == parol) != null)
             {
                 return true;
             }
-          else
+            else
             {
                 return false;
-            }            
+            }
         }
         public bool Create_New_User(string login, string password)
         {
@@ -193,8 +195,8 @@ namespace DAL
             }
 
         }
-       
-    //Types
+
+        //Types
         public List<string> GetExpanceTypes()
         {
             var expance_types = _ctx.Expances_Types.Select(pr => pr.Name.ToString()).ToList();
@@ -205,8 +207,13 @@ namespace DAL
 
             return _ctx.Profit_Types.Select(pr => pr.Name.ToString()).ToList();
         }
-
-        public void ChangesUserInfo(string login,string newLogin, string newPassword, string status)
+        public void DeleteUser(string login)
+        {
+            var user = _ctx.Users.Where(x => x.Login == login).SingleOrDefault();
+            _ctx.Users.Remove(user);
+            _ctx.SaveChanges();
+        }
+        public void ChangesUserInfo(string login, string newLogin, string newPassword, string status)
         {
 
             var user = _ctx.Users.Where(x => x.Login == login).SingleOrDefault();
@@ -218,6 +225,6 @@ namespace DAL
         }
 
 
-}
+    }
 
 }

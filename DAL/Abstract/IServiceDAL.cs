@@ -26,7 +26,8 @@ namespace DAL
         List<string> GetExpanceTypes();
         List<string> GetProfitsTypes();
         void ChangesUserInfo(string login, string newLogin, string newPassword, string status);
+        void DeleteUser(string login);
 
-        
+
     }
 }
