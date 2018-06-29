@@ -121,5 +121,10 @@ namespace BLL
         {
             return _dal.GetExpanceTypes();
         }
+        //new methods
+        public void DeleteUser(string login)
+        {
+            _dal.DeleteUser(login);
+        }
     }
 }
