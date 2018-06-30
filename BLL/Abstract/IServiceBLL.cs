@@ -32,5 +32,6 @@ namespace BLL
         void ChangeUser_Login(string login, string newLogin);
         void ChangeUser_Password(string login, string newPassword);
         void ChangeUser_Status(string login, string newStatus);
+        List<Diary_BLL> Diary_ByDate(string login, DateTime date1, DateTime date2);
     }
 }

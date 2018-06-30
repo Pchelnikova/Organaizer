@@ -65,6 +65,8 @@ namespace WcfOrganizer
         void ChangeUser_Password(string login, string newPassword);
         [OperationContract]
         void ChangeUser_Status(string login, string newStatus);
+        [OperationContract]
+        List<Diary_WCF> Diary_ByDate(string login, DateTime date1, DateTime date2);
 
     }  
 

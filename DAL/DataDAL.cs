@@ -230,5 +230,9 @@ namespace DAL
             user.Rang_of_User = rang;
             _ctx.SaveChanges();
         }
+        public List<Diary> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        {
+            return Get_All_Notes(login).Where(x => x.Date > date1 && x.Date < date2).ToList();
+        }
     }
 }

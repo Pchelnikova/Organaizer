@@ -11,7 +11,6 @@ namespace BLL
     public class DataBLL : IServiceBLL
     {
         private readonly DataDAL _dal;
-
         public DataBLL (DataDAL dal)
         {
             _dal = dal;
@@ -25,7 +24,6 @@ namespace BLL
             List<Diary_BLL> diaries = new List<Diary_BLL>();
             foreach (Diary item in diary_list)
                 diaries.Add(new Diary_BLL() { Date_ = item.Date, Text = item.Text });
-           
             return diaries;
         }
         public void Add_Note(string note, string login)
@@ -112,9 +110,7 @@ namespace BLL
         {
             return _dal.Create_New_User(login, password);
         }
-     
-
-    public List<string> GetProfitsTypes ()
+        public List<string> GetProfitsTypes ()
         {
             return _dal.GetProfitsTypes();
         }
@@ -137,6 +133,20 @@ namespace BLL
         public void ChangeUser_Status(string login, string newStatus)
         {
             _dal.ChangeUser_Status(login, newStatus);
+        }
+        public List<Diary_BLL> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        {
+            var diary_list = _dal.Diary_ByDate(login,date1,date2);
+            var diaries = new List<Diary_BLL>();
+            foreach (var item in diary_list)
+            {
+                diaries.Add(new Diary_BLL()
+                {
+                    Date_ = item.Date,
+                    Text = item.Text
+                });
+            }
+            return diaries;
         }
     }
 }

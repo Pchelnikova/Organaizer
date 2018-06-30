@@ -137,5 +137,19 @@ namespace WcfOrganizer
         {
             _bll.ChangeUser_Status(login, newStatus);
         }
+        public List<Diary_WCF> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        {
+            var diary_list =  _bll.Diary_ByDate(login, date1, date2);
+            var diaries = new List<Diary_WCF>();
+            foreach (var item in diary_list)
+            {
+                diaries.Add(new Diary_WCF()
+                {
+                    Date_ = item.Date_,
+                    Text = item.Text
+                });
+            }
+            return diaries;
+        }
     }
 }
