@@ -18,7 +18,7 @@ namespace DAL
 
         //Diary CRUD
         #region
-            public List<Diary> Get_All_Notes(string login)
+        public List<Diary> Get_All_Notes(string login)
         {
             var diaries = _ctx.Set<Diary>().Where(note => note.User.Login == login).ToList();
             return diaries;
@@ -46,7 +46,7 @@ namespace DAL
 
         }
         #endregion
-  
+
         //Profit CRUD
         #region
 
@@ -149,7 +149,7 @@ namespace DAL
             {
                 plan.Expance_Type = _ctx.Set<Expence_Type>().FirstOrDefault(e => e.Name == "NONE!");
             }
-            var plan_for_del = _ctx.Set<Plan>().FirstOrDefault(d => d.Date_ == plan.Date_ && 
+            var plan_for_del = _ctx.Set<Plan>().FirstOrDefault(d => d.Date_ == plan.Date_ &&
                                                                d.Sum == plan.Sum && d.Description == plan.Description &&
                                                                ((d.User == _ctx.Set<User>().FirstOrDefault(u => u.Login == login)) ||
                                                                (d.User == _ctx.Set<User>().FirstOrDefault(u => u.Rang_of_User.Id == _ctx.Set<Rang_of_User>().FirstOrDefault(r => r.Rang == "Senior").Id)) && d.Expance_Type == _ctx.Set<Expence_Type>().FirstOrDefault(e => e.Name == plan.Expance_Type.Name)));
@@ -254,7 +254,8 @@ namespace DAL
         }
         public List<Diary> Diary_ByDate(string login, DateTime date1, DateTime date2)
         {
-            return Get_All_Notes(login).Where(x => x.Date > date1 && x.Date < date2).ToList();
+            return Get_All_Notes(login).Where(x => x.Date.Date >= date1.Date && x.Date.Date <= date2.Date).ToList();
+
         }
     }
 }
