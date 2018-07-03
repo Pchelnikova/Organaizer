@@ -68,7 +68,7 @@ namespace BLL
 
         public void Delete_Profit(Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {            
-            _dal.Delete_Profit(ConverterBLL.BLL_to_Profit(profit_ExpanceBLL, login));
+            _dal.Delete_Profit(       ConverterBLL.BLL_to_Profit(profit_ExpanceBLL, login)     );
         }
         public void Delete_Plan(Profit_ExpanceBLL plan_ExpanceBLL, string login)
         {
