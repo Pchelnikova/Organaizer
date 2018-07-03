@@ -14,8 +14,10 @@ namespace DAL
         {
             _ctx = ctx;
         }
-        //methods 
-        public List<Diary> Get_All_Notes(string login)
+
+        //Diary CRUD
+        #region
+            public List<Diary> Get_All_Notes(string login)
         {
             var diaries = _ctx.Set<Diary>().Where(note => note.User.Login == login).ToList();
             return diaries;
@@ -42,8 +44,10 @@ namespace DAL
             _ctx.SaveChanges();
 
         }
-
-        //Budget CRUD
+        #endregion
+  
+        //Profit CRUD
+        #region
 
         public List<Profit> Get_All_Profits(string login)
         {
@@ -73,8 +77,10 @@ namespace DAL
                 _ctx.SaveChanges();
             }
         }
+        #endregion
 
         //Expence CRUD
+        #region
         public List<Expence> Get_All_Expance(string login)
         {
             var expance = _ctx.Set<Expence>().Where(pr => pr.User.Login == login).ToList();
@@ -100,8 +106,10 @@ namespace DAL
             _ctx.Set<Expence>().Remove(expence_for_del);
             _ctx.SaveChanges();
         }
+        #endregion
 
         //Plan CRUD
+        #region
         public List<Plan> Get_All_Plan(string login)
         {
             if ((_ctx.Set<User>().FirstOrDefault(u => u.Login == login).Rang_of_User.Id) == _ctx.Set<Rang_of_User>().FirstOrDefault(r => r.Rang == "Senior").Id)
@@ -142,6 +150,7 @@ namespace DAL
                 _ctx.SaveChanges();
             }
         }
+        #endregion
 
         //Get Total Sum and Balance
         #region
