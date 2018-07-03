@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace DAL
 {
-    internal class MyInitializer<T> :DropCreateDatabaseIfModelChanges<Model>
+    internal class MyInitializer<T> :DropCreateDatabaseAlways <Model>
     {
         protected override void Seed(Model context)
         {
@@ -146,10 +146,7 @@ namespace DAL
                                      new Expence {Date_ = new System.DateTime(2018, 1, 20), Sum = 500, Description = "Bedlinen", Expence_Type = Household, User = First },
                                      new Expence {Date_ = new System.DateTime(2018, 1, 22), Sum = 1500, Description = "Jeans and top", Expence_Type = Shopping, User = First },
                                      new Expence {Date_ = new System.DateTime(2018, 2, 2),  Sum = 5000, Description = "Pay the bills", Expence_Type = Apartment, User = First } });
-            context.SaveChanges();
-           
-             
-            
+            context.SaveChanges();                   
             
         }
     }

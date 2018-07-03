@@ -70,7 +70,13 @@ namespace DAL
         }
         public void Delete_Profit(Profit profit)
         {
-            var profit_for_del = _ctx.Set<Profit>().FirstOrDefault(d => (d.Date_ == profit.Date_ && d.Sum == profit.Sum && d.Description == profit.Description && d.User == _ctx.Set<User>().FirstOrDefault(u => u.Login == profit.User.Login) && d.Profit_Type == _ctx.Set<Profit_Type>().FirstOrDefault(e => e.Name == profit.Profit_Type.Name)));
+            var profit_for_del = _ctx.Set<Profit>()
+                .FirstOrDefault(d => (d.Date_ == profit.Date_ 
+                                        && d.Sum == profit.Sum 
+                                        && d.Description == profit.Description 
+                                        && d.User == _ctx.Set<User>()
+                                            .FirstOrDefault(u => u.Login == profit.User.Login) 
+                                            && d.Profit_Type == _ctx.Set<Profit_Type>().FirstOrDefault(e => e.Name == profit.Profit_Type.Name)));
             if (profit_for_del != null)
             {
                 _ctx.Set<Profit>().Remove(profit_for_del);
