@@ -15,7 +15,7 @@ namespace UnitTestProject
     {
       
 
-            private DataDAL _dal = null;
+        private DataDAL _dal = null;
 
         [TestInitialize]
         public void InitTest()
@@ -27,16 +27,46 @@ namespace UnitTestProject
         public void MethodAfter()
         {
             _dal = null;
-        }
+        }     
 
+        //public class FakeBreakeAwayContext : IBreakAwayContext
+        //{
+        //    public FakeBreakeAwayContext()
+        //    {
+        //        diary_fake = new Diary();
+        //    }
+
+        //    public IDbSet<Diary> Diary_Fake { get; private set; }
+
+        //    public IDbSet<Profit> Profits_Fake { get; private set; }
+
+        //    public IDbSet<Expence> Expenses_Fake { get; private set; }
+
+        //    public IDbSet<Plan> Plans_Fake { get; private set; }
+
+        //    public IDbSet<Wish> Wishes_Fake { get; private set; }
+
+        //    public int SaveChanges()
+        //    {
+        //        return 0;
+        //    }
+        //}
         [TestMethod]
         public void Test_Add_Note()
         {
-            //var moqGenerator = new Mock<DbContext>();
+           
+            //var set = new CustomDbSet<Diary>
+            //{
+            //    new Diary { Id = -1 }
+            //};
+
             var moqGenerator = new Mock<DbContext>();
+
+
+
             moqGenerator
                 .Setup(m => m.Set<Diary>())
-                .Returns(  (new FakeDbSet<Diary>() { new Diary { Id = -1 } })     );
+                .Returns(new DbSet<FakeDbSet<Diary>>(){);
             _dal = new DataDAL(moqGenerator.Object);
             var all_notes = _dal.Get_All_Notes("1").Count;
              _dal.Add_Note(_dal.Get_All_Notes("1")[0].Text,

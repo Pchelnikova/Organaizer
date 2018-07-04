@@ -179,6 +179,7 @@ namespace DAL
         {
             return (_ctx.Set<Profit>().Sum(p => p.Sum)) - (_ctx.Set<Expence>().Sum(p => p.Sum));
         }
+
         #endregion
 
         //Authorization
@@ -256,6 +257,15 @@ namespace DAL
         {
             return Get_All_Notes(login).Where(x => x.Date.Date >= date1.Date && x.Date.Date <= date2.Date).ToList();
 
+        }
+        private Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
+        {
+           var dictionary = new Dictionary<string, decimal>();
+            foreach (Profit_Type item in _ctx.Set<Profit>().Select(p => p.Profit_Type) )
+            {
+               dictionary.Add(item.Name, _ctx.Set<Profit>().Where(p=>p.Profit_Type == item).Sum(s => s.Sum));
+            }
+            return dictionary;
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace UnitTestProject
 {
-    public  class FakeDbSet<T> : IDbSet<T> where T : class, new()
+    public class FakeDbSet<T> : IDbSet<T> where T : class, new()
     {
         readonly ObservableCollection<T> _items;
         readonly IQueryable _query;
@@ -74,4 +74,9 @@ namespace UnitTestProject
             get { return _query.Provider; }
         }
     }
+
+    //public class CustomDbSet<T> :   where T : class, new()
+    //{
+        
+    //}
 }

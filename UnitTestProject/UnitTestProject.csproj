@@ -71,7 +71,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakeContext.cs" />
+    <Compile Include="FakeContext\BreakeAwayContext.cs" />
+    <Compile Include="FakeContext\FakeContext.cs" />
+    <Compile Include="FakeContext\IBreakeAwayContext.cs" />
+    <Compile Include="FakeContext\Repository.cs" />
     <Compile Include="UnitTestDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

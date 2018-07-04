@@ -67,7 +67,8 @@ namespace WcfOrganizer
         void ChangeUser_Status(string login, string newStatus);
         [OperationContract]
         List<Diary_WCF> Diary_ByDate(string login, DateTime date1, DateTime date2);
-
+        [OperationContract]
+        Dictionary<string, decimal> Get_Sum_byType_forChart_Profits();
     }  
 
 }
