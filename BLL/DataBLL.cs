@@ -15,8 +15,8 @@ namespace BLL
         {
             _dal = dal;
         }
-        //Wish CRUD
-        #region
+
+        #region Wish
         public List<Profit_ExpanceBLL> Get_All_Wishes(string login)
         {
             return ConverterBLL.Wish_to_BLL_List(_dal.Get_All_Wishes(login));
@@ -25,14 +25,9 @@ namespace BLL
         {
             _dal.Save_New_Wish(new_wish.Date_, new_wish.Sum, new_wish.Description, Type, login);
         }
-        public List<string> GetWishTypes()
-        {
-            return _dal.GetWishTypes();
-        }
         #endregion
 
-        //Diary CRUD
-        #region
+        #region Diary
         public List<Diary_BLL> Show_All_Notes(string login)
         {
             var diary_list = _dal.Get_All_Notes(login);
@@ -49,10 +44,23 @@ namespace BLL
         {
             _dal.Delete_Note(note);
         }
+        public List<Diary_BLL> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        {
+            var diary_list = _dal.Diary_ByDate(login, date1, date2);
+            var diaries = new List<Diary_BLL>();
+            foreach (var item in diary_list)
+            {
+                diaries.Add(new Diary_BLL()
+                {
+                    Date_ = item.Date,
+                    Text = item.Text
+                });
+            }
+            return diaries;
+        }
         #endregion
 
-        //Budget CRUD
-        #region
+        #region Budget
         public List<Profit_ExpanceBLL> Get_All_Profits(string login)
         {
             return ConverterBLL.Profit_to_BLL_List(_dal.Get_All_Profits(login));
@@ -96,8 +104,7 @@ namespace BLL
         }
         #endregion
 
-        //Get Total Sum and Balance
-        #region
+        #region Get Total Sum and Balance
         public decimal Get_Total_Profits()
         {
             return _dal.Get_Total_Profits();
@@ -116,7 +123,7 @@ namespace BLL
         }
         #endregion
 
-        //Authorization
+        #region Authorization and User
         public bool Authorization(string login, string parol)
         {
             return _dal.Authorization(login, parol);
@@ -124,14 +131,6 @@ namespace BLL
         public bool Create_New_User(string login, string password)
         {
             return _dal.Create_New_User(login, password);
-        }
-        public List<string> GetProfitsTypes()
-        {
-            return _dal.GetProfitsTypes();
-        }
-        public List<string> GetExpanceTypes()
-        {
-            return _dal.GetExpanceTypes();
         }
         public void DeleteUser(string login)
         {
@@ -149,23 +148,28 @@ namespace BLL
         {
             _dal.ChangeUser_Status(login, newStatus);
         }
-        public List<Diary_BLL> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        #endregion
+
+        #region Types
+        public List<string> GetProfitsTypes()
         {
-            var diary_list = _dal.Diary_ByDate(login, date1, date2);
-            var diaries = new List<Diary_BLL>();
-            foreach (var item in diary_list)
-            {
-                diaries.Add(new Diary_BLL()
-                {
-                    Date_ = item.Date,
-                    Text = item.Text
-                });
-            }
-            return diaries;
+            return _dal.GetProfitsTypes();
         }
+        public List<string> GetExpanceTypes()
+        {
+            return _dal.GetExpanceTypes();
+        }
+        public List<string> GetWishTypes()
+        {
+            return _dal.GetWishTypes();
+        }
+        #endregion
+
+        #region Charts
         public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
         {
             return _dal.Get_Sum_byType_forChart_Profits();
         }
+        #endregion
     }
 }

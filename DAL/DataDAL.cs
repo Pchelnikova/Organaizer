@@ -15,8 +15,8 @@ namespace DAL
         {
             _ctx = ctx;
         }
-        //Wish CRUD
-        #region 
+
+        #region Wish
         public List<Wish> Get_All_Wishes(string login)
         {
             var wishes = _ctx.Set<Wish>().Where(z => z.User.Login == login).ToList();
@@ -36,25 +36,22 @@ namespace DAL
             _ctx.Set<Wish>().Add(wish);
             _ctx.SaveChanges();
         }
-        public List<string> GetWishTypes()
-        {
-            return _ctx.Set<Event_Type>().Select(z => z.Name.ToString()).ToList();
-        }
         #endregion
 
-        //Diary CRUD
-        #region
+        #region Diary
         public List<Diary> Get_All_Notes(string login)
         {
             var diaries = _ctx.Set<Diary>().Where(note => note.User.Login == login).ToList();
             return diaries;
         }
-
+        public List<Diary> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        {
+            return Get_All_Notes(login).Where(x => x.Date.Date >= date1.Date && x.Date.Date <= date2.Date).ToList();
+        }
         public void Add_Note(string note, string login)
         {
             var diaries = _ctx.Set<Diary>();
             var user = _ctx.Set<User>().FirstOrDefault(u => u.Login == login);
-
             Diary new_note = new Diary()
             {
                 Date = DateTime.Now,
@@ -69,12 +66,10 @@ namespace DAL
             var diary_note = _ctx.Set<Diary>().FirstOrDefault(d => d.Text == note);
             _ctx.Set<Diary>().Remove(diary_note);
             _ctx.SaveChanges();
-
         }
         #endregion
 
-        //Profit CRUD
-        #region
+        #region Profit
 
         public List<Profit> Get_All_Profits(string login)
         {
@@ -124,9 +119,8 @@ namespace DAL
 
         }
         #endregion
-
-        //Expence CRUD
-        #region
+        
+        #region Expence
         public List<Expence> Get_All_Expance(string login)
         {
             var expance = _ctx.Set<Expence>().Where(pr => pr.User.Login == login).ToList();
@@ -153,8 +147,7 @@ namespace DAL
         }
         #endregion
 
-        //Plan CRUD
-        #region
+        #region Plan
         public List<Plan> Get_All_Plan(string login)
         {
             if ((_ctx.Set<User>().FirstOrDefault(u => u.Login == login).Rang_of_User.Id) == _ctx.Set<Rang_of_User>().FirstOrDefault(r => r.Rang == "Senior").Id)
@@ -197,8 +190,7 @@ namespace DAL
         }
         #endregion
 
-        //Get Total Sum and Balance
-        #region
+        #region Get Total Sum and Balance
         public decimal Get_Total_Profits()
         {
             return _ctx.Set<Profit>().Sum(p => p.Sum);
@@ -218,7 +210,7 @@ namespace DAL
 
         #endregion
 
-        //Authorization
+        #region Authorization and User
         public bool Authorization(string login, string parol)
         {
             if (_ctx.Set<User>().FirstOrDefault(u => u.Login == login && u.Password_ == parol) != null)
@@ -253,17 +245,6 @@ namespace DAL
                 return false;
             }
         }
-
-        //Types
-        public List<string> GetExpanceTypes()
-        {
-            var expance_types = _ctx.Set<Expence_Type>().Select(pr => pr.Name.ToString()).ToList();
-            return expance_types;
-        }
-        public List<string> GetProfitsTypes()
-        {
-            return _ctx.Set<Profit_Type>().Select(pr => pr.Name.ToString()).ToList();
-        }
         public void DeleteUser(string login)
         {
             var user = _ctx.Set<User>().Where(x => x.Login == login).SingleOrDefault();
@@ -289,19 +270,34 @@ namespace DAL
             user.Rang_of_User = rang;
             _ctx.SaveChanges();
         }
-        public List<Diary> Diary_ByDate(string login, DateTime date1, DateTime date2)
-        {
-            return Get_All_Notes(login).Where(x => x.Date.Date >= date1.Date && x.Date.Date <= date2.Date).ToList();
+        #endregion
 
+        #region Types
+        public List<string> GetWishTypes()
+        {
+            return _ctx.Set<Event_Type>().Select(z => z.Name.ToString()).ToList();
         }
+        public List<string> GetExpanceTypes()
+        {
+            var expance_types = _ctx.Set<Expence_Type>().Select(pr => pr.Name.ToString()).ToList();
+            return expance_types;
+        }
+        public List<string> GetProfitsTypes()
+        {
+            return _ctx.Set<Profit_Type>().Select(pr => pr.Name.ToString()).ToList();
+        }
+        #endregion
+
+        #region Charts
         public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
         {
-           var dictionary = new Dictionary<string, decimal>();
-            foreach (Profit_Type item in _ctx.Set<Profit>().Select(p => p.Profit_Type) )
+            var dictionary = new Dictionary<string, decimal>();
+            foreach (Profit_Type item in _ctx.Set<Profit>().Select(p => p.Profit_Type))
             {
-               dictionary.Add(item.Name, _ctx.Set<Profit>().Where(p=>p.Profit_Type == item).Sum(s => s.Sum));
+                dictionary.Add(item.Name, _ctx.Set<Profit>().Where(p => p.Profit_Type == item).Sum(s => s.Sum));
             }
             return dictionary;
         }
+        #endregion
     }
 }
