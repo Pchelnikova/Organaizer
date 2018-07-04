@@ -148,7 +148,7 @@ namespace BLL
             }
             return diaries;
         }
-        private Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
+        public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
         {
             return _dal.Get_Sum_byType_forChart_Profits();
         }

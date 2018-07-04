@@ -111,7 +111,7 @@ namespace WcfOrganizer
         {
             return _bll.Create_New_User(login, password);
         }
-        private Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
+        public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
         {
             return _bll.Get_Sum_byType_forChart_Profits();
         }
