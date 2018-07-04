@@ -163,7 +163,12 @@ namespace BLL
         {
             return _dal.GetWishTypes();
         }
-        public string GetTypeUser(string login)
+        /// <summary>
+        /// Check of rang of User
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>Return "true", if rang of user is high ("Senior")</returns>
+        public bool GetTypeUser(string login)
         {
             return _dal.GetTypeUser(login);
         }

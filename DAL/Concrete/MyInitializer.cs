@@ -81,6 +81,10 @@ namespace DAL
             };
             context.Expances_Types.AddRange(new List<Expence_Type> { Food, Shopping, Household, Apartment, Transport, Connection });
             context.SaveChanges();
+            Rang_of_User Owner = new Rang_of_User()
+            {
+                Rang = "Owner"
+            };
             Rang_of_User Senior = new Rang_of_User()
             {
                 Rang = "Senior"

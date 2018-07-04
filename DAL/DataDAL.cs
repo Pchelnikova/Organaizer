@@ -279,9 +279,15 @@ namespace DAL
         {
             return _ctx.Set<Profit_Type>().Select(pr => pr.Name.ToString()).ToList();
         }
-        public string GetTypeUser(string login)
+        /// <summary>
+        /// Check of rang of User
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>Return "true", if rang of user is high ("Senior")</returns>
+        public bool GetTypeUser(string login)
         {
-            return _ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString();
+            return (_ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Owner"
+                  || _ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Senior");
         }
         #endregion
 
