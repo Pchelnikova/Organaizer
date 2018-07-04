@@ -68,16 +68,16 @@ namespace BLL
 
         public void Delete_Profit(Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {            
-            _dal.Delete_Profit(       ConverterBLL.BLL_to_Profit(profit_ExpanceBLL, login)     );
+            _dal.Delete_Profit( ConverterBLL.BLL_to_Profit(profit_ExpanceBLL, login)     );
         }
         public void Delete_Plan(Profit_ExpanceBLL plan_ExpanceBLL, string login)
         {
-            _dal.Delete_Plan(ConverterBLL.BLL_to_Plan(plan_ExpanceBLL), login);
+            _dal.Delete_Plan(ConverterBLL.BLL_to_Plan(plan_ExpanceBLL, login));
         }
        
        public void Delete_Expence (Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {
-            _dal.Delete_Expence(ConverterBLL.BLL_to_Expence(profit_ExpanceBLL), login);
+            _dal.Delete_Expence(ConverterBLL.BLL_to_Expence(profit_ExpanceBLL, login));
         }
         #endregion
 

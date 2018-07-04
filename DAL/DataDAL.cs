@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DAL.Helper;
-using static DAL.Helper.Helper;
+using static DAL.Helper.Comparators;
 
 namespace DAL
 {
@@ -71,45 +71,31 @@ namespace DAL
         }
         public void Delete_Profit(Profit profit)
         {
-            var comparator = new ProfitComparator();
-            List<bool> results = new List<bool>();
+            
             try
             {
-                for (int i = 0; i < _ctx.Set<Profit>().Count(); i++)
-                {
-                    results.Add(comparator.Equals(_ctx.Set<Profit>().ElementAt(i), profit));
-
-                }
-
-
-
-
                 var result = _ctx.Set<Profit>().Single(new ProfitComparator(), profit);
-                //var profit_for_del = _ctx.Set<Profit>().Single(d => d.Id == profit.Id);
                 _ctx.Set<Profit>().Remove(result);
                 _ctx.SaveChanges();
             }
             catch (Exception)
-            {
-
-                
-            }
-         
+            {                
+            }        
 
         }
         #endregion
 
         //Expence CRUD
         #region
-        public List<Expence> Get_All_Expance(string login)
+        public List<Expense> Get_All_Expance(string login)
         {
-            var expance = _ctx.Set<Expence>().Where(pr => pr.User.Login == login).ToList();
+            var expance = _ctx.Set<Expense>().Where(pr => pr.User.Login == login).ToList();
             return expance;
         }
 
         public void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login)
         {
-            Expence expence = new Expence()
+            Expense expence = new Expense()
             {
                 Date_ = date,
                 Sum = sum,
@@ -117,14 +103,20 @@ namespace DAL
                 Expence_Type = _ctx.Set<Expence_Type>().FirstOrDefault(p => p.Name == Type),
                 Description = description
             };
-            _ctx.Set<Expence>().Add(expence);
+            _ctx.Set<Expense>().Add(expence);
             _ctx.SaveChanges();
         }
-        public void Delete_Expence(Expence expence, string login)
+        public void Delete_Expence(Expense expense)
         {
-            var expence_for_del = _ctx.Set<Expence>().FirstOrDefault(d => d.Date_ == expence.Date_ && d.Sum == expence.Sum && d.Description == expence.Description && d.User == _ctx.Set<User>().FirstOrDefault(u => u.Login == login) && d.Expence_Type == _ctx.Set<Expence_Type>().FirstOrDefault(e => e.Name == expence.Expence_Type.Name));
-            _ctx.Set<Expence>().Remove(expence_for_del);
-            _ctx.SaveChanges();
+            try
+            {
+                var result = _ctx.Set<Expense>().Single(new ExpenseComparator(), expense);
+                _ctx.Set<Expense>().Remove(result);
+                _ctx.SaveChanges();
+            }
+            catch (Exception)
+            {
+            }
         }
         #endregion
 
@@ -148,28 +140,29 @@ namespace DAL
                 Date_ = date,
                 Sum = sum,
                 User = _ctx.Set<User>().FirstOrDefault(u => u.Login == login),
-                Expance_Type = _ctx.Set<Expence_Type>().FirstOrDefault(p => p.Name == Type),
+                Expense_Type = _ctx.Set<Expence_Type>().FirstOrDefault(p => p.Name == Type),
                 Description = description
             };
             _ctx.Set<Plan>().Add(expence);
             _ctx.SaveChanges();
         }
-        public void Delete_Plan(Plan plan, string login)
+        public void Delete_Plan(Plan plan)
         {
-            if (plan.Expance_Type == null)
+            if (plan.Expense_Type == null)
             {
-                plan.Expance_Type = _ctx.Set<Expence_Type>().FirstOrDefault(e => e.Name == "NONE!");
+                plan.Expense_Type = _ctx.Set<Expence_Type>().FirstOrDefault(e => e.Name == "NONE!");
             }
-            var plan_for_del = _ctx.Set<Plan>().FirstOrDefault(d => d.Date_ == plan.Date_ &&
-                                                               d.Sum == plan.Sum && d.Description == plan.Description &&
-                                                               ((d.User == _ctx.Set<User>().FirstOrDefault(u => u.Login == login)) ||
-                                                               (d.User == _ctx.Set<User>().FirstOrDefault(u => u.Rang_of_User.Id == _ctx.Set<Rang_of_User>().FirstOrDefault(r => r.Rang == "Senior").Id)) && d.Expance_Type == _ctx.Set<Expence_Type>().FirstOrDefault(e => e.Name == plan.Expance_Type.Name)));
-            if (plan_for_del != null)
+            try
             {
-                _ctx.Set<Plan>().Remove(plan_for_del);
+                var result = _ctx.Set<Plan>().Single(new PlanComparator(), plan);
+                _ctx.Set<Plan>().Remove(result);
                 _ctx.SaveChanges();
             }
+            catch (Exception)
+            {
+            }
         }
+        
         #endregion
 
         //Get Total Sum and Balance
@@ -180,7 +173,7 @@ namespace DAL
         }
         public decimal Get_Total_Expences()
         {
-            return _ctx.Set<Expence>().Sum(p => p.Sum);
+            return _ctx.Set<Expense>().Sum(p => p.Sum);
         }
         public decimal Get_Total_Plans()
         {
@@ -188,7 +181,7 @@ namespace DAL
         }
         public decimal Get_Balance()
         {
-            return (_ctx.Set<Profit>().Sum(p => p.Sum)) - (_ctx.Set<Expence>().Sum(p => p.Sum));
+            return (_ctx.Set<Profit>().Sum(p => p.Sum)) - (_ctx.Set<Expense>().Sum(p => p.Sum));
         }
 
         #endregion

@@ -11,12 +11,12 @@ namespace DAL
         List<Profit> Get_All_Profits(string login);
         void Save_New_Profit(DateTime date, Decimal sum, string description, string Type, string login);
         void Delete_Profit(Profit profit);
-        List<Expence> Get_All_Expance(string login);
+        List<Expense> Get_All_Expance(string login);
         void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login);
-        void Delete_Expence(Expence expence, string login);
+        void Delete_Expence(Expense expence);
         List<Plan> Get_All_Plan(string login);
         void Save_New_Plan(DateTime date, Decimal sum, string description, string Type, string login);
-        void Delete_Plan(Plan plan, string login);
+        void Delete_Plan(Plan plan);
         decimal Get_Total_Profits();
         decimal Get_Total_Expences();
         decimal Get_Total_Plans();

@@ -14,7 +14,7 @@ namespace UnitTestProject
 
         public IDbSet<Profit> Profits_Fake { get; set; }
 
-        public IDbSet<Expence> Expenses_Fake { get; set; }
+        public IDbSet<Expense> Expenses_Fake { get; set; }
 
         public IDbSet<Plan> Plans_Fake { get; set; }
 

@@ -13,7 +13,7 @@ namespace DAL
         public virtual ICollection<Wish> Wish_List { get; set; } 
         public virtual ICollection<Diary> Dairy { get; set; }
         public virtual ICollection<Profit> Profit { get; set; }
-        public virtual ICollection<Expence> Expance { get; set; }
+        public virtual ICollection<Expense> Expance { get; set; }
         public virtual ICollection<Plan> Budjet_Plan { get; set; }
     }
 }

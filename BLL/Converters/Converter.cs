@@ -22,15 +22,15 @@ namespace BLL
             return profit;
         }
 
-        public static Expence BLL_to_Expence(Profit_ExpanceBLL profit_ExpenceBLL)
+        public static Expense BLL_to_Expence(Profit_ExpanceBLL profit_ExpenceBLL, string login)
         {
-            Expence expence = new Expence
+            Expense expence = new Expense
             {
                 Date_ = profit_ExpenceBLL.Date_,
                 Sum = profit_ExpenceBLL.Sum,
                 Description = profit_ExpenceBLL.Description,
-                User = new User(),
-                Expence_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type}
+                Expence_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type},
+                User = new User() { Login = login }
             };
             return expence;
         }
@@ -42,10 +42,10 @@ namespace BLL
             return profitsBLL;
 
         }
-        public static List<Profit_ExpanceBLL> Expence_to_BLL_List(List<Expence> expence)
+        public static List<Profit_ExpanceBLL> Expence_to_BLL_List(List<Expense> expence)
         {
             List<Profit_ExpanceBLL> expenceBLL = new List<Profit_ExpanceBLL>();
-            foreach (Expence item in expence)
+            foreach (Expense item in expence)
                 expenceBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expence_Type.Name });
             return expenceBLL;
         }
@@ -53,18 +53,19 @@ namespace BLL
         {
             List<Profit_ExpanceBLL> planBLL = new List<Profit_ExpanceBLL>();
             foreach (Plan item in plan)
-                planBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expance_Type.Name });
+                planBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expense_Type.Name });
             return planBLL;
         }
-        public static Plan BLL_to_Plan(Profit_ExpanceBLL profit_ExpenceBLL)
+        public static Plan BLL_to_Plan(Profit_ExpanceBLL profit_ExpenceBLL, string login)
         {
             Plan plan = new Plan
             {
                 Date_ = profit_ExpenceBLL.Date_,
                 Sum = profit_ExpenceBLL.Sum,
                 Description = profit_ExpenceBLL.Description,
-                User = new User(),
-                Expance_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type }
+                User = new User() { Login = login },
+                Expense_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type },
+
             };
             return plan;
         }

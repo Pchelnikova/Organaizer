@@ -12,7 +12,7 @@ namespace UnitTestProject
     {
         IDbSet<Diary> Diary_Fake { get; }
         IDbSet<Profit> Profits_Fake { get; }
-        IDbSet<Expence> Expenses_Fake { get; }
+        IDbSet<Expense> Expenses_Fake { get; }
         IDbSet<Plan> Plans_Fake { get; }
         IDbSet<Wish> Wishes_Fake { get; }
 

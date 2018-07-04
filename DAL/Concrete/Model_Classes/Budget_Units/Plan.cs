@@ -4,6 +4,6 @@
     public class Plan : Budjet_Unit
     {
         //EF navigation properties
-        public virtual Expence_Type Expance_Type { get; set; } 
+        public virtual Expence_Type Expense_Type { get; set; } 
     }
 }

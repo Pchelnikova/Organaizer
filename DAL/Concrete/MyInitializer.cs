@@ -113,7 +113,7 @@ namespace DAL
             Plan Budjet = new Plan()
             {
                 Date_ = new System.DateTime(2018, 03, 14),
-                Expance_Type = Holiday,
+                Expense_Type = Holiday,
                 Sum = 30000,
                 Description = "Summer vacation!",
                 User = First
@@ -139,13 +139,13 @@ namespace DAL
                                      new Profit { Date_ = new System.DateTime(2018, 1, 19), Sum = 2000, Description = "HappyBirthday!!!", Profit_Type = Present, User = First },
                                      new Profit { Date_ = new System.DateTime(2018, 2, 15), Sum = 5000, Description = "Insurance, PRIVATBANK", Profit_Type = Dividents, User = First} });
             context.SaveChanges();
-            context.Expences.AddRange(new List<Expence>
-                                   { new Expence {Date_ = new System.DateTime(2018, 1, 2),  Sum = 500, Description = "Supermarket", Expence_Type = Food, User = First },
-                                     new Expence {Date_ = new System.DateTime(2018, 1, 5),  Sum = 980, Description = "Petrol", Expence_Type = Transport, User = First },
-                                     new Expence {Date_ = new System.DateTime(2018, 1, 15),  Sum = 400, Description = "Market", Expence_Type = Food, User = First },
-                                     new Expence {Date_ = new System.DateTime(2018, 1, 20), Sum = 500, Description = "Bedlinen", Expence_Type = Household, User = First },
-                                     new Expence {Date_ = new System.DateTime(2018, 1, 22), Sum = 1500, Description = "Jeans and top", Expence_Type = Shopping, User = First },
-                                     new Expence {Date_ = new System.DateTime(2018, 2, 2),  Sum = 5000, Description = "Pay the bills", Expence_Type = Apartment, User = First } });
+            context.Expences.AddRange(new List<Expense>
+                                   { new Expense {Date_ = new System.DateTime(2018, 1, 2),  Sum = 500, Description = "Supermarket", Expence_Type = Food, User = First },
+                                     new Expense {Date_ = new System.DateTime(2018, 1, 5),  Sum = 980, Description = "Petrol", Expence_Type = Transport, User = First },
+                                     new Expense {Date_ = new System.DateTime(2018, 1, 15),  Sum = 400, Description = "Market", Expence_Type = Food, User = First },
+                                     new Expense {Date_ = new System.DateTime(2018, 1, 20), Sum = 500, Description = "Bedlinen", Expence_Type = Household, User = First },
+                                     new Expense {Date_ = new System.DateTime(2018, 1, 22), Sum = 1500, Description = "Jeans and top", Expence_Type = Shopping, User = First },
+                                     new Expense {Date_ = new System.DateTime(2018, 2, 2),  Sum = 5000, Description = "Pay the bills", Expence_Type = Apartment, User = First } });
             context.SaveChanges();                   
             
         }
