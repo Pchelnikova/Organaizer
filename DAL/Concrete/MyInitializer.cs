@@ -96,22 +96,30 @@ namespace DAL
             };
             context.Rangs_of_User.Add(Junior);
             context.Rangs_of_User.Add(Senior);
+            context.Rangs_of_User.Add(Owner);
             context.SaveChanges();
             User First = new User()
             {
-                Login = "1",// "Senior",
+                Login = "First",// "Owner",
                 Password_ = "1",
+                Rang_of_User = Owner
+            };
+            User Second = new User() // "Senior
+            {
+                Login = "Second",
+                Password_ = "2",
                 Rang_of_User = Senior
             };
-            User Second = new User()
+            User Third = new User() // "Junior"
             {
-                Login = "2",
-                Password_ = "2",
+                Login = "Third",
+                Password_ = "3",
                 Rang_of_User = Junior
             };
-      
+
             context.Users.Add(First);
             context.Users.Add(Second);
+            context.Users.Add(Third);
             context.SaveChanges();
 
             Plan Budjet = new Plan()
@@ -150,6 +158,10 @@ namespace DAL
                                      new Expense {Date_ = new System.DateTime(2018, 1, 20), Sum = 500, Description = "Bedlinen", Expence_Type = Household, User = First },
                                      new Expense {Date_ = new System.DateTime(2018, 1, 22), Sum = 1500, Description = "Jeans and top", Expence_Type = Shopping, User = First },
                                      new Expense {Date_ = new System.DateTime(2018, 2, 2),  Sum = 5000, Description = "Pay the bills", Expence_Type = Apartment, User = First } });
+            context.SaveChanges();
+            context.Profits.AddRange(new List<Profit>
+                                   { new Profit { Date_ = new System.DateTime(2018, 1, 10), Sum = 500, Description = "January", Profit_Type = Present, User = Third  },
+                                   { new Profit { Date_ = new System.DateTime(2018, 2, 10), Sum = 100, Description = "February", Profit_Type = Present, User = Third } } });
             context.SaveChanges();                   
             
         }
