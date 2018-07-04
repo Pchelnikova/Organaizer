@@ -71,8 +71,19 @@ namespace DAL
         }
         public void Delete_Profit(Profit profit)
         {
+            var comparator = new ProfitComparator();
+            List<bool> results = new List<bool>();
             try
             {
+                for (int i = 0; i < _ctx.Set<Profit>().Count(); i++)
+                {
+                    results.Add(comparator.Equals(_ctx.Set<Profit>().ElementAt(i), profit));
+
+                }
+
+
+
+
                 var result = _ctx.Set<Profit>().Single(new ProfitComparator(), profit);
                 //var profit_for_del = _ctx.Set<Profit>().Single(d => d.Id == profit.Id);
                 _ctx.Set<Profit>().Remove(result);
