@@ -196,6 +196,14 @@ namespace BLL
         {
             return _dal.Get_Sum_byType_forChart_Profits(login, profit);
         }
+        public List<string> Get_Name_byType_forChart_Expense(string login)
+        {
+            return _dal.Get_Name_byType_forChart_Expense(login);
+        }
+        public List<decimal> Get_Sum_byType_forChart_Expense(string login, string expense)
+        {
+            return _dal.Get_Sum_byType_forChart_Expense(login, expense);
+        }
         #endregion
     }
 }

@@ -35,6 +35,8 @@ namespace DAL
         List<string> GetWishTypes();
         List<string> Get_Name_byType_forChart_Profits(string login);
         List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit);
+        List<string> Get_Name_byType_forChart_Expense(string login);
+        List<decimal> Get_Sum_byType_forChart_Expense(string login, string expense);
 
     }
 }

@@ -85,6 +85,10 @@ namespace WcfOrganizer
         List<string> GetAllJuniors();
         [OperationContract]
         List<string> GetAllRangs();
+        [OperationContract]
+        List<string> Get_Name_byType_forChart_Expense(string login);
+        [OperationContract]
+        List<decimal> Get_Sum_byType_forChart_Expense(string login, string expense);
 
     }  
 

@@ -207,6 +207,14 @@ namespace WcfOrganizer
         {
             return _bll.Get_Sum_byType_forChart_Profits(login, profit);
         }
+        public List<string> Get_Name_byType_forChart_Expense(string login)
+        {
+            return _bll.Get_Name_byType_forChart_Expense(login);
+        }
+        public List<decimal> Get_Sum_byType_forChart_Expense(string login, string expense)
+        {
+            return _bll.Get_Sum_byType_forChart_Expense(login, expense);
+        }
         #endregion
     }
 }

@@ -322,6 +322,21 @@ namespace DAL
             }
             return sumList;
         }
+        public List<string> Get_Name_byType_forChart_Expense(string login)
+        {
+            var expanse = _ctx.Set<Expense>().Where(x => x.User.Login == login).Select(x => x.Expence_Type.Name).Distinct().ToList();
+            return expanse;
+        }
+        public List<decimal> Get_Sum_byType_forChart_Expense(string login, string expense)
+        {
+            var type = _ctx.Set<Expense>().Where(x => x.User.Login == login && x.Expence_Type.Name == expense).ToList();
+            var sumList = new List<decimal>();
+            foreach (var item in type)
+            {
+                sumList.Add(item.Sum);
+            }
+            return sumList;
+        }
         #endregion
     }
 }
