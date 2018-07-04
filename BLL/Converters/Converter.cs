@@ -22,7 +22,7 @@ namespace BLL
             return profit;
         }
 
-        public static Expence BLL_to_Expence(Profit_ExpanceBLL profit_ExpenceBLL)
+        public static Expense BLL_to_Expence(Profit_ExpanceBLL profit_ExpenceBLL, string login)
         {
             Expense expence = new Expense
             {
@@ -56,7 +56,7 @@ namespace BLL
                 planBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expense_Type.Name });
             return planBLL;
         }
-        public static Plan BLL_to_Plan(Profit_ExpanceBLL profit_ExpenceBLL)
+        public static Plan BLL_to_Plan(Profit_ExpanceBLL profit_ExpenceBLL, string login)
         {
             Plan plan = new Plan
             {

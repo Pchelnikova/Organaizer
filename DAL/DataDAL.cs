@@ -107,7 +107,7 @@ namespace DAL
         #endregion
         
         #region Expence
-        public List<Expence> Get_All_Expance(string login)
+        public List<Expense> Get_All_Expance(string login)
         {
             var expance = _ctx.Set<Expense>().Where(pr => pr.User.Login == login).ToList();
             return expance;
