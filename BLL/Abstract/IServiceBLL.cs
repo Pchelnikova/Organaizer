@@ -33,5 +33,9 @@ namespace BLL
         void ChangeUser_Password(string login, string newPassword);
         void ChangeUser_Status(string login, string newStatus);
         List<Diary_BLL> Diary_ByDate(string login, DateTime date1, DateTime date2);
+        List<Profit_ExpanceBLL> Get_All_Wishes(string login);
+        void Save_New_Wish(Profit_ExpanceBLL new_wish, string Type, string login);
+        List<string> GetWishTypes();
+
     }
 }

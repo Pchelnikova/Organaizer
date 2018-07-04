@@ -22,7 +22,8 @@ namespace WcfOrganizer
         {
             _bll = bll;
         }
-
+        
+        #region Diary
         public List<Diary_WCF> Get_All_Notes(string login)
         {
             var diary_list = _bll.Show_All_Notes(login);
@@ -33,7 +34,6 @@ namespace WcfOrganizer
             }
             return diaries;
         }
-
         public void Add_Note(string note, string login)
         {
             _bll.Add_Note(note, login);
@@ -43,6 +43,23 @@ namespace WcfOrganizer
             if (note != null)
                 _bll.Delete_Note(note);
         }
+        public List<Diary_WCF> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        {
+            var diary_list = _bll.Diary_ByDate(login, date1, date2);
+            var diaries = new List<Diary_WCF>();
+            foreach (var item in diary_list)
+            {
+                diaries.Add(new Diary_WCF()
+                {
+                    Date_ = item.Date_,
+                    Text = item.Text
+                });
+            }
+            return diaries;
+        }
+        #endregion
+
+        #region Profit
         public List<Profit_ExpanceWCF> Get_All_Profits(string login)
         {
             return Converter.BLL_to_WCF_List(_bll.Get_All_Profits(login));
@@ -55,6 +72,9 @@ namespace WcfOrganizer
         {
             _bll.Delete_Profit(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
+        #endregion
+
+        #region Expance
         public void Save_New_Expance(Profit_ExpanceWCF new_expance, string Type, string login)
         {
             _bll.Save_New_Expence(Converter.WCF_to_BLL(new_expance), Type, login);
@@ -67,8 +87,20 @@ namespace WcfOrganizer
         {
             _bll.Delete_Expence(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
+        #endregion
 
-        //Plans
+        #region Wish
+        public List<Profit_ExpanceWCF> Get_All_Wishes(string login)
+        {
+            return Converter.BLL_to_WCF_List(_bll.Get_All_Wishes(login));
+        }
+        public void Save_New_Wish(Profit_ExpanceWCF new_wish, string Type, string login)
+        {
+            _bll.Save_New_Wish(Converter.WCF_to_BLL(new_wish), Type, login);
+        }
+        #endregion
+
+        #region Plans
         public void Save_New_Plan(Profit_ExpanceWCF new_plan, string Type, string login)
         {
             _bll.Save_New_Plan(Converter.WCF_to_BLL(new_plan), Type, login);
@@ -81,9 +113,9 @@ namespace WcfOrganizer
         {
             _bll.Delete_Plan(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
+        #endregion
 
-        //Get Total Summ and Balance
-        #region
+        #region Get Total Summ And Balance
         public decimal Get_Total_Profits()
         {
             return _bll.Get_Total_Profits();
@@ -102,7 +134,7 @@ namespace WcfOrganizer
         }
         #endregion
 
-        //Authorization
+        #region Authorization and User
         public bool Authorization(string login, string parol)
         {
             return _bll.Authorization(login, parol);
@@ -110,20 +142,6 @@ namespace WcfOrganizer
         public bool Create_New_User(string login, string password)
         {
             return _bll.Create_New_User(login, password);
-        }
-        public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
-        {
-            return _bll.Get_Sum_byType_forChart_Profits();
-        }
-        //Types
-        public List<string> GetProfitsTypes()
-        {
-            return _bll.GetProfitsTypes();
-        }
-        public List<string> GetExpanceTypes()
-        {
-            return _bll.GetExpanceTypes();
-
         }
         public void DeleteUser(string login)
         {
@@ -141,19 +159,28 @@ namespace WcfOrganizer
         {
             _bll.ChangeUser_Status(login, newStatus);
         }
-        public List<Diary_WCF> Diary_ByDate(string login, DateTime date1, DateTime date2)
+        #endregion
+
+        #region Types
+        public List<string> GetProfitsTypes()
         {
-            var diary_list =  _bll.Diary_ByDate(login, date1, date2);
-            var diaries = new List<Diary_WCF>();
-            foreach (var item in diary_list)
-            {
-                diaries.Add(new Diary_WCF()
-                {
-                    Date_ = item.Date_,
-                    Text = item.Text
-                });
-            }
-            return diaries;
+            return _bll.GetProfitsTypes();
         }
+        public List<string> GetExpanceTypes()
+        {
+            return _bll.GetExpanceTypes();
+        }
+        public List<string> GetWishTypes()
+        {
+            return _bll.GetWishTypes();
+        }
+        #endregion
+
+        #region Charts
+        public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
+        {
+            return _bll.Get_Sum_byType_forChart_Profits();
+        }
+        #endregion
     }
 }

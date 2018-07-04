@@ -69,6 +69,12 @@ namespace WcfOrganizer
         List<Diary_WCF> Diary_ByDate(string login, DateTime date1, DateTime date2);
         [OperationContract]
         Dictionary<string, decimal> Get_Sum_byType_forChart_Profits();
+        [OperationContract]
+        List<Profit_ExpanceWCF> Get_All_Wishes(string login);
+        [OperationContract]
+        void Save_New_Wish(Profit_ExpanceWCF new_wish, string Type, string login);
+        [OperationContract]
+        List<string> GetWishTypes();
     }  
 
 }
