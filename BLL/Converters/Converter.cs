@@ -17,7 +17,7 @@ namespace BLL
                 Sum = profit_ExpenceBLL.Sum,
                 Description = profit_ExpenceBLL.Description,
                 Profit_Type = new Profit_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type },
-                User = new User() {Login = login }
+                User = new User() { Login = login }
             };
             return profit;
         }
@@ -30,11 +30,11 @@ namespace BLL
                 Sum = profit_ExpenceBLL.Sum,
                 Description = profit_ExpenceBLL.Description,
                 User = new User(),
-                Expence_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type}
+                Expence_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type }
             };
             return expence;
         }
-        public static List <Profit_ExpanceBLL> Profit_to_BLL_List (List<Profit> profits)
+        public static List<Profit_ExpanceBLL> Profit_to_BLL_List(List<Profit> profits)
         {
             List<Profit_ExpanceBLL> profitsBLL = new List<Profit_ExpanceBLL>();
             foreach (Profit item in profits)
@@ -49,7 +49,7 @@ namespace BLL
                 expenceBLL.Add(new Profit_ExpanceBLL() { Date_ = item.Date_, Sum = item.Sum, Description = item.Description, Profit_Expance_Type = item.Expence_Type.Name });
             return expenceBLL;
         }
-        public static List<Profit_ExpanceBLL>Plans_to_BLL_List(List<Plan> plan)
+        public static List<Profit_ExpanceBLL> Plans_to_BLL_List(List<Plan> plan)
         {
             List<Profit_ExpanceBLL> planBLL = new List<Profit_ExpanceBLL>();
             foreach (Plan item in plan)
@@ -67,6 +67,33 @@ namespace BLL
                 Expance_Type = new Expence_Type() { Name = profit_ExpenceBLL.Profit_Expance_Type }
             };
             return plan;
+        }
+        public static List<Profit_ExpanceBLL> Wish_to_BLL_List(List<Wish> wish)
+        {
+            List<Profit_ExpanceBLL> wishBLL = new List<Profit_ExpanceBLL>();
+            foreach (var item in wish)
+            {
+                wishBLL.Add(new Profit_ExpanceBLL()
+                {
+                    Date_ = item.Date_,
+                    Sum = item.Sum,
+                    Description = item.Description,
+                    Profit_Expance_Type = item.Event.Name
+                });
+            }
+            return wishBLL;
+        }
+        public static Wish BLL_to_Wish(Profit_ExpanceBLL profit_ExpanceBLL, string login)
+        {
+            Wish wish = new Wish()
+            {
+                Date_ = profit_ExpanceBLL.Date_,
+                User = new User() { Login = login },
+                Sum = profit_ExpanceBLL.Sum,
+                Event = new Event_Type() { Name = profit_ExpanceBLL.Profit_Expance_Type },
+                Description = profit_ExpanceBLL.Description
+            };
+            return wish;
         }
     }
 }

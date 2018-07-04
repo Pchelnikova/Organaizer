@@ -11,14 +11,29 @@ namespace BLL
     public class DataBLL : IServiceBLL
     {
         private readonly DataDAL _dal;
-        public DataBLL (DataDAL dal)
+        public DataBLL(DataDAL dal)
         {
             _dal = dal;
         }
+        //Wish CRUD
+        #region
+        public List<Profit_ExpanceBLL> Get_All_Wishes(string login)
+        {
+            return ConverterBLL.Wish_to_BLL_List(_dal.Get_All_Wishes(login));
+        }
+        public void Save_New_Wish(Profit_ExpanceBLL new_wish, string Type, string login)
+        {
+            _dal.Save_New_Wish(new_wish.Date_, new_wish.Sum, new_wish.Description, Type, login);
+        }
+        public List<string> GetWishTypes()
+        {
+            return _dal.GetWishTypes();
+        }
+        #endregion
 
         //Diary CRUD
         #region
-        public List<Diary_BLL> Show_All_Notes (string login)
+        public List<Diary_BLL> Show_All_Notes(string login)
         {
             var diary_list = _dal.Get_All_Notes(login);
             List<Diary_BLL> diaries = new List<Diary_BLL>();
@@ -30,7 +45,7 @@ namespace BLL
         {
             _dal.Add_Note(note, login);
         }
-        public void Delete_Note (string note)
+        public void Delete_Note(string note)
         {
             _dal.Delete_Note(note);
         }
@@ -44,7 +59,7 @@ namespace BLL
         }
         public List<Profit_ExpanceBLL> Get_All_Expance(string login)
         {
-            return ConverterBLL.Expence_to_BLL_List(_dal.Get_All_Expance(login));            
+            return ConverterBLL.Expence_to_BLL_List(_dal.Get_All_Expance(login));
         }
         public List<Profit_ExpanceBLL> Get_All_Plans(string login)
         {
@@ -67,15 +82,15 @@ namespace BLL
 
 
         public void Delete_Profit(Profit_ExpanceBLL profit_ExpanceBLL, string login)
-        {            
-            _dal.Delete_Profit(       ConverterBLL.BLL_to_Profit(profit_ExpanceBLL, login)     );
+        {
+            _dal.Delete_Profit(ConverterBLL.BLL_to_Profit(profit_ExpanceBLL, login));
         }
         public void Delete_Plan(Profit_ExpanceBLL plan_ExpanceBLL, string login)
         {
             _dal.Delete_Plan(ConverterBLL.BLL_to_Plan(plan_ExpanceBLL), login);
         }
-       
-       public void Delete_Expence (Profit_ExpanceBLL profit_ExpanceBLL, string login)
+
+        public void Delete_Expence(Profit_ExpanceBLL profit_ExpanceBLL, string login)
         {
             _dal.Delete_Expence(ConverterBLL.BLL_to_Expence(profit_ExpanceBLL), login);
         }
@@ -110,7 +125,7 @@ namespace BLL
         {
             return _dal.Create_New_User(login, password);
         }
-        public List<string> GetProfitsTypes ()
+        public List<string> GetProfitsTypes()
         {
             return _dal.GetProfitsTypes();
         }
@@ -136,7 +151,7 @@ namespace BLL
         }
         public List<Diary_BLL> Diary_ByDate(string login, DateTime date1, DateTime date2)
         {
-            var diary_list = _dal.Diary_ByDate(login,date1,date2);
+            var diary_list = _dal.Diary_ByDate(login, date1, date2);
             var diaries = new List<Diary_BLL>();
             foreach (var item in diary_list)
             {

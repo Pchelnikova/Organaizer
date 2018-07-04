@@ -30,6 +30,9 @@ namespace DAL
         void ChangeUser_Password(string login, string newPassword);
         void ChangeUser_Status(string login, string newStatus);
         List<Diary> Diary_ByDate(string login, DateTime date1, DateTime date2);
+        List<Wish> Get_All_Wishes(string login);
+        void Save_New_Wish(DateTime date, Decimal sum, string description, string Type, string login);
+        List<string> GetWishTypes();
 
     }
 }

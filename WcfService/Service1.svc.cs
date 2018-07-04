@@ -22,7 +22,7 @@ namespace WcfOrganizer
         {
             _bll = bll;
         }
-
+        //Diary
         public List<Diary_WCF> Get_All_Notes(string login)
         {
             var diary_list = _bll.Show_All_Notes(login);
@@ -33,7 +33,6 @@ namespace WcfOrganizer
             }
             return diaries;
         }
-
         public void Add_Note(string note, string login)
         {
             _bll.Add_Note(note, login);
@@ -43,6 +42,7 @@ namespace WcfOrganizer
             if (note != null)
                 _bll.Delete_Note(note);
         }
+        //Profit
         public List<Profit_ExpanceWCF> Get_All_Profits(string login)
         {
             return Converter.BLL_to_WCF_List(_bll.Get_All_Profits(login));
@@ -55,6 +55,7 @@ namespace WcfOrganizer
         {
             _bll.Delete_Profit(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
+        //Expance
         public void Save_New_Expance(Profit_ExpanceWCF new_expance, string Type, string login)
         {
             _bll.Save_New_Expence(Converter.WCF_to_BLL(new_expance), Type, login);
@@ -67,7 +68,19 @@ namespace WcfOrganizer
         {
             _bll.Delete_Expence(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
-
+        //Wish
+        public List<Profit_ExpanceWCF> Get_All_Wishes(string login)
+        {
+            return Converter.BLL_to_WCF_List(_bll.Get_All_Wishes(login));
+        }
+        public void Save_New_Wish(Profit_ExpanceWCF new_wish, string Type, string login)
+        {
+            _bll.Save_New_Wish(Converter.WCF_to_BLL(new_wish), Type, login);
+        }
+        public List<string> GetWishTypes()
+        {
+            return _bll.GetWishTypes();
+        }
         //Plans
         public void Save_New_Plan(Profit_ExpanceWCF new_plan, string Type, string login)
         {
@@ -81,7 +94,6 @@ namespace WcfOrganizer
         {
             _bll.Delete_Plan(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
         }
-
         //Get Total Summ and Balance
         #region
         public decimal Get_Total_Profits()
@@ -123,7 +135,6 @@ namespace WcfOrganizer
         public List<string> GetExpanceTypes()
         {
             return _bll.GetExpanceTypes();
-
         }
         public void DeleteUser(string login)
         {

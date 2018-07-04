@@ -15,6 +15,32 @@ namespace DAL
         {
             _ctx = ctx;
         }
+        //Wish CRUD
+        #region 
+        public List<Wish> Get_All_Wishes(string login)
+        {
+            var wishes = _ctx.Set<Wish>().Where(z => z.User.Login == login).ToList();
+            return wishes;
+        }
+        public void Save_New_Wish(DateTime date, Decimal sum, string description, string Type, string login)
+        {
+            Wish wish = new Wish()
+            {
+                Date_ = date,
+                Sum = sum,
+                Description = description,
+                Event = _ctx.Set<Event_Type>().FirstOrDefault(z => z.Name == Type),
+                Agreement = false,
+                User = _ctx.Set<User>().SingleOrDefault(z => z.Login == login)
+            };
+            _ctx.Set<Wish>().Add(wish);
+            _ctx.SaveChanges();
+        }
+        public List<string> GetWishTypes()
+        {
+            return _ctx.Set<Event_Type>().Select(z => z.Name.ToString()).ToList();
+        }
+        #endregion
 
         //Diary CRUD
         #region
@@ -106,7 +132,6 @@ namespace DAL
             var expance = _ctx.Set<Expence>().Where(pr => pr.User.Login == login).ToList();
             return expance;
         }
-
         public void Save_New_Expance(DateTime date, Decimal sum, string description, string Type, string login)
         {
             Expence expence = new Expence()
