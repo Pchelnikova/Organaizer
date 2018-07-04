@@ -76,6 +76,11 @@ namespace DAL
             var profits = _ctx.Set<Profit>().Where(pr => pr.User.Id == (_ctx.Set<User>().FirstOrDefault(u => u.Login == login)).Id).ToList();
             return profits;
         }
+        public List<Profit> Get_All_Profits()
+        {
+            var profits = _ctx.Set<Profit>().Where(p=>p.User.Rang_of_User.Rang == "Owner" && p.User.Rang_of_User.Rang == "Senior").ToList();
+            return profits;
+        }
         public void Save_New_Profit(DateTime date, Decimal sum, string description, string Type, string login)
         {
             Profit profit = new Profit()

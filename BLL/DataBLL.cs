@@ -65,6 +65,10 @@ namespace BLL
         {
             return ConverterBLL.Profit_to_BLL_List(_dal.Get_All_Profits(login));
         }
+        public List<Profit_ExpanceBLL> Get_All_Profits()
+        {
+            return ConverterBLL.Profit_to_BLL_List(_dal.Get_All_Profits());
+        }
         public List<Profit_ExpanceBLL> Get_All_Expance(string login)
         {
             return ConverterBLL.Expence_to_BLL_List(_dal.Get_All_Expance(login));

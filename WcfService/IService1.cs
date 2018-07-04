@@ -26,6 +26,8 @@ namespace WcfOrganizer
         [OperationContract]
         List<Profit_ExpanceWCF> Get_All_Profits(string login);
         [OperationContract]
+        List<Profit_ExpanceWCF> Get_All_Profits_forOwner();
+        [OperationContract]
         List<Profit_ExpanceWCF> Get_All_Expance(string login);
         [OperationContract]
         List<Profit_ExpanceWCF> Get_All_Plans(string login);
@@ -79,6 +81,7 @@ namespace WcfOrganizer
         List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit);
         [OperationContract]
         bool GetTypeUser(string login);
+        
     }  
 
 }

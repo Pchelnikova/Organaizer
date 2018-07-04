@@ -64,6 +64,10 @@ namespace WcfOrganizer
         {
             return Converter.BLL_to_WCF_List(_bll.Get_All_Profits(login));
         }
+        public List<Profit_ExpanceWCF> Get_All_Profits_forOwner()
+        {
+            return Converter.BLL_to_WCF_List(_bll.Get_All_Profits());
+        }
         public void Save_New_Profit(Profit_ExpanceWCF new_profit, string Type, string login)
         {
             _bll.Save_New_Profit(Converter.WCF_to_BLL(new_profit), Type, login);
