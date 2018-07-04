@@ -33,6 +33,8 @@ namespace DAL
         List<Wish> Get_All_Wishes(string login);
         void Save_New_Wish(DateTime date, Decimal sum, string description, string Type, string login);
         List<string> GetWishTypes();
+        List<string> Get_Name_byType_forChart_Profits(string login);
+        List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit);
 
     }
 }

@@ -177,9 +177,13 @@ namespace WcfOrganizer
         #endregion
 
         #region Charts
-        public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
+        public List<string> Get_Name_byType_forChart_Profits(string login)
         {
-            return _bll.Get_Sum_byType_forChart_Profits();
+            return _bll.Get_Name_byType_forChart_Profits(login);
+        }
+        public List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit)
+        {
+            return _bll.Get_Sum_byType_forChart_Profits(login, profit);
         }
         #endregion
     }

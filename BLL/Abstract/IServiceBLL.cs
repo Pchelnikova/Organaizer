@@ -36,6 +36,8 @@ namespace BLL
         List<Profit_ExpanceBLL> Get_All_Wishes(string login);
         void Save_New_Wish(Profit_ExpanceBLL new_wish, string Type, string login);
         List<string> GetWishTypes();
+        List<string> Get_Name_byType_forChart_Profits(string login);
+        List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit);
 
     }
 }

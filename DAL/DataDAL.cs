@@ -282,14 +282,20 @@ namespace DAL
         #endregion
 
         #region Charts
-        public Dictionary<string, decimal> Get_Sum_byType_forChart_Profits()
+        public List<string> Get_Name_byType_forChart_Profits(string login)
         {
-            var dictionary = new Dictionary<string, decimal>();
-            foreach (Profit_Type item in _ctx.Set<Profit>().Select(p => p.Profit_Type))
+            var profitTypes = _ctx.Set<Profit>().Where(x => x.User.Login == login).Select(x => x.Profit_Type.Name).Distinct().ToList();
+            return profitTypes;
+        }
+        public List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit)
+        {
+            var type = _ctx.Set<Profit>().Where(x => x.User.Login == login && x.Profit_Type.Name == profit).ToList();
+            var sumList = new List<decimal>();
+            foreach (var item in type)
             {
-                dictionary.Add(item.Name, _ctx.Set<Profit>().Where(p => p.Profit_Type == item).Sum(s => s.Sum));
+                sumList.Add(item.Sum);
             }
-            return dictionary;
+            return sumList;
         }
         #endregion
     }
