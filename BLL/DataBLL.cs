@@ -165,7 +165,7 @@ namespace BLL
         }
         public string GetTypeUser(string login)
         {
-            return _dal.string GetTypeUser(string login);
+            return _dal.GetTypeUser(login);
         }
         #endregion
 

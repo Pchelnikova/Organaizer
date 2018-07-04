@@ -176,7 +176,7 @@ namespace WcfOrganizer
         }
         public string GetTypeUser(string login)
         {
-            return _bll.string GetTypeUser(string login);
+            return _bll.GetTypeUser( login);
         }
         #endregion
 
