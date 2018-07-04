@@ -292,8 +292,13 @@ namespace DAL
         /// <returns>Return "true", if rang of user is high ("Senior")</returns>
         public bool GetTypeUser(string login)
         {
-            return (_ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Owner"
-                  || _ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Senior");
+            bool type_high = false;
+            if (_ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Owner"
+                  || _ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Senior")
+            {
+                type_high = true;
+            }
+            return type_high;
         }
         public List<string> GetAllJuniors()
         {
