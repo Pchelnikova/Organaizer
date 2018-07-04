@@ -36,6 +36,22 @@ namespace DAL
             _ctx.Set<Wish>().Add(wish);
             _ctx.SaveChanges();
         }
+        public void Delete_Wish(Wish wish)
+        {
+            try
+            {
+                if (wish.Event == null)
+                {
+                    wish.Event = _ctx.Set<Event_Type>().FirstOrDefault(e => e.Name == "NONE!");
+                }
+                var result = _ctx.Set<Wish>().Single(new WishComperator(), wish);
+                _ctx.Set<Wish>().Remove(result);
+                _ctx.SaveChanges();
+            }
+            catch (Exception)
+            {
+            }
+        }
         #endregion
 
         #region Diary
@@ -78,7 +94,7 @@ namespace DAL
         }
         public List<Profit> Get_All_Profits()
         {
-            var profits = _ctx.Set<Profit>().Where(p=>p.User.Rang_of_User.Rang == "Owner"
+            var profits = _ctx.Set<Profit>().Where(p => p.User.Rang_of_User.Rang == "Owner"
                           && p.User.Rang_of_User.Rang == "Senior").ToList();
             return profits;
         }
@@ -98,7 +114,6 @@ namespace DAL
         }
         public void Delete_Profit(Profit profit)
         {
-            
             try
             {
                 var result = _ctx.Set<Profit>().Single(new ProfitComparator(), profit);
@@ -106,12 +121,12 @@ namespace DAL
                 _ctx.SaveChanges();
             }
             catch (Exception)
-            {                
-            }        
+            {
+            }
 
         }
         #endregion
-        
+
         #region Expence
         public List<Expense> Get_All_Expance(string login)
         {
@@ -186,7 +201,7 @@ namespace DAL
             {
             }
         }
-        
+
         #endregion
 
         #region Get Total Sum and Balance

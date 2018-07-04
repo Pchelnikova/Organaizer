@@ -89,6 +89,8 @@ namespace WcfOrganizer
         List<string> Get_Name_byType_forChart_Expense(string login);
         [OperationContract]
         List<decimal> Get_Sum_byType_forChart_Expense(string login, string expense);
+        [OperationContract]
+        void Delete_Wish(Profit_ExpanceWCF profit_ExpanceWCF, string login);
 
     }  
 

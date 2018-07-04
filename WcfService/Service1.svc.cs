@@ -102,6 +102,10 @@ namespace WcfOrganizer
         {
             _bll.Save_New_Wish(Converter.WCF_to_BLL(new_wish), Type, login);
         }
+        public void Delete_Wish(Profit_ExpanceWCF profit_ExpanceWCF, string login)
+        {
+            _bll.Delete_Wish(Converter.WCF_to_BLL(profit_ExpanceWCF), login);
+        }
         #endregion
 
         #region Plans

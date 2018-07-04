@@ -12,7 +12,6 @@ namespace DAL.Helper
         {
             return source.Single(item => comparer.Equals(item, value));
         }
-
         public class ProfitComparator : IEqualityComparer<Profit>
         {
 
@@ -60,7 +59,6 @@ namespace DAL.Helper
                 return obj.GetHashCode();
             }
         }
-
         public class PlanComparator : IEqualityComparer<Plan>
         {
             public bool Equals(Plan x, Plan y)
@@ -85,7 +83,26 @@ namespace DAL.Helper
                 return obj.GetHashCode();
             }
         }
-
-
+        public class WishComperator : IEqualityComparer<Wish>
+        {
+            public bool Equals(Wish x, Wish y)
+            {
+                bool result = false;
+                bool date = x.Date_ == y.Date_;
+                bool sum = x.Sum == y.Sum;
+                bool desc = x.Description == y.Description;
+                bool event_type = x.Event == y.Event;
+                bool user = x.User.Login == y.User.Login;
+                if(date && sum && desc && event_type && user)
+                {
+                    result = true;
+                }
+                return result;
+            }
+            public int GetHashCode(Wish obj)
+            {
+                return obj.GetHashCode();
+            }
+        }
     }
 }

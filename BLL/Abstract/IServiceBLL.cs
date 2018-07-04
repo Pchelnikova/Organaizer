@@ -40,6 +40,7 @@ namespace BLL
         List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit);
         List<string> Get_Name_byType_forChart_Expense(string login);
         List<decimal> Get_Sum_byType_forChart_Expense(string login, string expense);
+        void Delete_Wish(Profit_ExpanceBLL wish_ExpanceBLL, string login);
 
     }
 }

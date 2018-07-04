@@ -25,6 +25,10 @@ namespace BLL
         {
             _dal.Save_New_Wish(new_wish.Date_, new_wish.Sum, new_wish.Description, Type, login);
         }
+        public void Delete_Wish(Profit_ExpanceBLL wish_ExpanceBLL, string login)
+        {
+            _dal.Delete_Wish(ConverterBLL.BLL_to_Wish(wish_ExpanceBLL, login));
+        }
         #endregion
 
         #region Diary
