@@ -176,6 +176,15 @@ namespace BLL
         {
             return _dal.GetTypeUser(login);
         }
+        public List<string> GetAllJuniors()
+        {
+            return _dal.GetAllJuniors();
+        }
+        public List<string> GetAllRangs()
+        {
+            return _dal.GetAllRangs();
+        }
+
         #endregion
 
         #region Charts

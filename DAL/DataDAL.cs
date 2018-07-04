@@ -78,7 +78,8 @@ namespace DAL
         }
         public List<Profit> Get_All_Profits()
         {
-            var profits = _ctx.Set<Profit>().Where(p=>p.User.Rang_of_User.Rang == "Owner" && p.User.Rang_of_User.Rang == "Senior").ToList();
+            var profits = _ctx.Set<Profit>().Where(p=>p.User.Rang_of_User.Rang == "Owner"
+                          && p.User.Rang_of_User.Rang == "Senior").ToList();
             return profits;
         }
         public void Save_New_Profit(DateTime date, Decimal sum, string description, string Type, string login)
@@ -294,6 +295,15 @@ namespace DAL
             return (_ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Owner"
                   || _ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString() == "Senior");
         }
+        public List<string> GetAllJuniors()
+        {
+            return _ctx.Set<User>().Where(x => x.Rang_of_User.Rang == "Junior").Select(x => x.Login).ToList();
+        }
+        public List<string> GetAllRangs()
+        {
+            return _ctx.Set<Rang_of_User>().Select(r => r.Rang.ToString()).ToList();
+        }
+
         #endregion
 
         #region Charts

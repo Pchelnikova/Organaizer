@@ -81,7 +81,11 @@ namespace WcfOrganizer
         List<decimal> Get_Sum_byType_forChart_Profits(string login, string profit);
         [OperationContract]
         bool GetTypeUser(string login);
-        
+        [OperationContract]
+        List<string> GetAllJuniors();
+        [OperationContract]
+        List<string> GetAllRangs();
+
     }  
 
 }

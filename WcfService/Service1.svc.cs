@@ -187,6 +187,15 @@ namespace WcfOrganizer
         {
             return _bll.GetTypeUser( login);
         }
+        public List<string> GetAllJuniors()
+        {
+            return _bll.GetAllJuniors();
+        }
+        public List<string> GetAllRangs()
+        {
+            return _bll.GetAllRangs();
+        }
+
         #endregion
 
         #region Charts
