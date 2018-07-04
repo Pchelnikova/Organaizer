@@ -163,6 +163,10 @@ namespace BLL
         {
             return _dal.GetWishTypes();
         }
+        public string GetTypeUser(string login)
+        {
+            return _dal.string GetTypeUser(string login);
+        }
         #endregion
 
         #region Charts

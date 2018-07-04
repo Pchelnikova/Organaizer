@@ -279,6 +279,10 @@ namespace DAL
         {
             return _ctx.Set<Profit_Type>().Select(pr => pr.Name.ToString()).ToList();
         }
+        public string GetTypeUser(string login)
+        {
+            return _ctx.Set<User>().SingleOrDefault(u => u.Login == login).Rang_of_User.Rang.ToString();
+        }
         #endregion
 
         #region Charts

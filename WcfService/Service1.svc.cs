@@ -174,6 +174,10 @@ namespace WcfOrganizer
         {
             return _bll.GetWishTypes();
         }
+        public string GetTypeUser(string login)
+        {
+            return _bll.string GetTypeUser(string login);
+        }
         #endregion
 
         #region Charts
