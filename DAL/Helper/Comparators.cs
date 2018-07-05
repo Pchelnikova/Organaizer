@@ -91,7 +91,7 @@ namespace DAL.Helper
                 bool date = x.Date_ == y.Date_;
                 bool sum = x.Sum == y.Sum;
                 bool desc = x.Description == y.Description;
-                bool event_type = x.Event == y.Event;
+                bool event_type = x.Event.Name == y.Event.Name;
                 bool user = x.User.Login == y.User.Login;
                 if(date && sum && desc && event_type && user)
                 {
