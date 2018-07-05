@@ -321,7 +321,7 @@ namespace DAL
         }
         public List<string> GetAllRangs()
         {
-            return _ctx.Set<Rang_of_User>().Select(r => r.Rang.ToString()).ToList();
+            return _ctx.Set<Rang_of_User>().Select(r => r.Rang.ToString()).Where(r=>r != "Owner").ToList();
         }
 
         #endregion
